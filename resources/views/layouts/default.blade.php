@@ -1,7 +1,3 @@
-@php
-    use Illuminate\Support\Facades\Route;
-    $routeName = Route::currentRouteName()
-@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,23 +25,41 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link @if ($routeName === 'home') active @endif"
+                    <a class="nav-link @if (Route::currentRouteName() === 'home') active @endif"
                        href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @if ($routeName === 'products') active @endif"
+                    <a class="nav-link @if (Route::currentRouteName() === 'products') active @endif"
                        href="{{ route('products') }}">Products</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link @if ($routeName === 'login') active @endif"
-                       href="{{ route('login') }}">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link @if ($routeName === 'register') active @endif"
-                       href="{{ route('register') }}">Register</a>
-                </li>
+                @auth()
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ Auth::user()->username }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
+                            aria-labelledby="userDropDownMenu">
+                            <li>
+                                <a class="dropdown-item @if (Route::currentRouteName() === 'orders') active @endif"
+                                   href="#">Orders</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </li>
+                @endauth
+                @guest()
+                    <li class="nav-item">
+                        <a class="nav-link @if ($routeName === 'login') active @endif"
+                           href="{{ route('login') }}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @if ($routeName === 'register') active @endif"
+                           href="{{ route('register') }}">Register</a>
+                    </li>
+                @endguest
             </ul>
         </div>
     </div>

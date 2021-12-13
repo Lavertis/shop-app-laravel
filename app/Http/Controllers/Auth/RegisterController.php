@@ -33,6 +33,8 @@ class RegisterController extends Controller
             'password' => Hash::make($request->get('password'))
         ]);
 
+        auth()->attempt($request->only('username', 'password'));
+
         return redirect()->route('home');
     }
 }
