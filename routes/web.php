@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,9 +22,8 @@ Route::get('/login', function () {
     return view('layouts.default', ["title" => "Login", "content" => "Logging"]);
 })->name('login');
 
-Route::get('/register', function () {
-    return view('layouts.default', ["title" => "Create account", "content" => "Registration"]);
-})->name('register');
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/products', function () {
     return view('layouts.default', ["title" => "Products", "content" => "Products"]);
