@@ -14,5 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('layouts.default', ["title" => "Homepage", "content" => "HomePage"]);
+})->name('home');
+
+Route::get('/login', function () {
+    return view('layouts.default', ["title" => "Login", "content" => "Logging"]);
+})->name('login');
+
+Route::get('/register', function () {
+    return view('layouts.default', ["title" => "Create account", "content" => "Registration"]);
+})->name('register');
+
+Route::get('/products', function () {
+    return view('layouts.default', ["title" => "Products", "content" => "Products"]);
+})->name('products');
