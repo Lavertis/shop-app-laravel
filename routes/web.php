@@ -15,16 +15,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layouts.default', ["title" => "Homepage", "content" => "HomePage"]);
+    return view('home');
 })->name('home');
 
 Route::get('/login', function () {
-    return view('layouts.default', ["title" => "Login", "content" => "Logging"]);
+    return view('layouts.app', ["title" => "Login", "content" => "Logging"]);
 })->name('login');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/products', function () {
-    return view('layouts.default', ["title" => "Products", "content" => "Products"]);
+    return view('layouts.app', ["title" => "Products", "content" => "Products"]);
 })->name('products');

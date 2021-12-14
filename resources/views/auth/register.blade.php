@@ -1,4 +1,4 @@
-@extends('layouts.default', ["title" => "Create account"])
+@extends('layouts.app', ["title" => "Create account"])
 
 @section('content')
     <div class="container container px-4 px-lg-5 my-auto h-100">
