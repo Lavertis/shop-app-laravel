@@ -8,7 +8,7 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-custom">
+<nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
         <span class="navbar-brand">Shop</span>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -31,7 +31,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                            data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ Auth::user()->username }}
+                            {{ Auth::user()->getAttribute('username') }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
                             aria-labelledby="userDropDownMenu">
@@ -39,6 +39,7 @@
                                 <a class="dropdown-item @if (Route::currentRouteName() === 'orders') active @endif"
                                    href="#">Orders</a>
                             </li>
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
                             <li><a class="dropdown-item" href="#">Logout</a></li>
                         </ul>
                     </li>
@@ -60,11 +61,11 @@
 
 @yield('content')
 
-<footer class="py-2 bg-dark mt-auto footer-custom">
+<footer class="py-2 mt-auto">
     <div class="container px-4 px-lg-5">
         <p class="m-0 text-center text-white">Copyright &copy; Rafał Kuźmiczuk 2022</p>
     </div>
 </footer>
-
+<script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>

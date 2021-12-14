@@ -5,6 +5,14 @@ body {
     background-image: linear-gradient(315deg, #f8f9d2 0%, #e8dbfc 74%);
 }
 
-.navbar-custom, .footer-custom {
+nav, footer {
     background-color: #7209b7 !important;
+}
+
+.navbar-nav > li > .dropdown-menu {
+    background-color: #5e0cbe;
+}
+
+.navbar-nav > li > .dropdown-menu > li > .dropdown-item:active {
+    background-color: #7b1bea;
 }
