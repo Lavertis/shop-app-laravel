@@ -34,6 +34,6 @@ class LoginController extends Controller
             $this->userService->logoutOtherDevices($request);
             return redirect()->route('home');
         } else
-            return back()->with('status', 'Invalid login details');
+            return back()->withInput()->with('status', 'Invalid login details');
     }
 }
