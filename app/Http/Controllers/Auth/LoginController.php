@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\RegisterUserRequest;
+use App\Http\Requests\Auth\LogUserInRequest;
 use App\Services\UserServiceInterface;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
-class RegisterController extends Controller
+class LoginController extends Controller
 {
     private UserServiceInterface $userService;
 
@@ -24,13 +24,15 @@ class RegisterController extends Controller
 
     public function index(): Factory|View|Application
     {
-        return view('auth.register');
+        return view('auth.login');
     }
 
-    public function registerUser(RegisterUserRequest $request): RedirectResponse
+    public function logUserIn(LogUserInRequest $request): RedirectResponse
     {
-        $this->userService->saveUser($request);
-        $this->userService->login($request);
-        return redirect()->route('home');
+        $loggedSuccessfully = $this->userService->login($request);
+        if ($loggedSuccessfully)
+            return redirect()->route('home');
+        else
+            return back()->with('status', 'Invalid login details');
     }
 }

@@ -13,17 +13,17 @@ use Illuminate\Support\Facades\Hash;
  */
 class UserService implements UserServiceInterface
 {
-    public function saveUser(Request $request)
+    public function saveUser(Request $request): User
     {
-        User::create([
+        return User::create([
             'username' => $request->get('username'),
             'email' => $request->get('email'),
             'password' => Hash::make($request->get('password'))
         ]);
     }
 
-    public function login(Request $request)
+    public function login(Request $request): bool
     {
-        auth()->attempt($request->only('username', 'password'));
+        return auth()->attempt($request->only('username', 'password'));
     }
 }
