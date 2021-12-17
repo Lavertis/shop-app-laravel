@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\RegisterUserRequest;
+use App\Http\Requests\Auth\RegisterRequest;
 use App\Services\UserServiceInterface;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -27,7 +27,7 @@ class RegisterController extends Controller
         return view('auth.register');
     }
 
-    public function register(RegisterUserRequest $request): RedirectResponse
+    public function register(RegisterRequest $request): RedirectResponse
     {
         $this->userService->saveUser($request);
         $this->userService->login($request);

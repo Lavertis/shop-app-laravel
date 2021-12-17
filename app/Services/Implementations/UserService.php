@@ -4,7 +4,9 @@ namespace App\Services\Implementations;
 
 use App\Models\User;
 use App\Services\UserServiceInterface;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 /**
@@ -30,5 +32,13 @@ class UserService implements UserServiceInterface
     public function logout()
     {
         auth()->logout();
+    }
+
+    /**
+     * @throws AuthenticationException
+     */
+    public function logoutOtherDevices(Request $request): User|bool|null
+    {
+        return Auth::logoutOtherDevices($request->get('password'));
     }
 }

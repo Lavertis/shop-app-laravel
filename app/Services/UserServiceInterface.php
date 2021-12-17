@@ -12,4 +12,6 @@ interface UserServiceInterface
     public function login(Request $request): bool;
 
     public function logout();
+
+    public function logoutOtherDevices(Request $request): User|bool|null;
 }
