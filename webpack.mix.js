@@ -15,3 +15,5 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .sourceMaps();
 mix.browserSync({proxy: "localhost:8000", notify: false});
+mix.setPublicPath('public');
+mix.setResourceRoot('../');

@@ -13,6 +13,27 @@
 
 namespace App\Models {
     /**
+     * App\Models\Product
+     *
+     * @property int $code
+     * @property string $name
+     * @property string|null $description
+     * @property float $price
+     * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|Product newQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|Product query()
+     * @method static \Illuminate\Database\Eloquent\Builder|Product whereCode($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Product whereDescription($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Product whereName($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Product wherePrice($value)
+     */
+    class Product extends \Eloquent
+    {
+    }
+}
+
+namespace App\Models {
+    /**
      * App\Models\User
      *
      * @property int $id

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href={{ mix('css/app.css') }}>
+    <link rel="stylesheet" href={{ asset('css/app.css') }}>
     <title>{{ $title }}</title>
 </head>
 <body class="d-flex flex-column min-vh-100">
