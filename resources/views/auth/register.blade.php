@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container container px-4 px-lg-5 my-auto h-100">
-        <div class="col-11 col-sm-10 col-md-8 col-lg-6 col-xl-5 mx-auto bg-light rounded-3 p-5 shadow">
+        <div class="col-10 col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4 mx-auto bg-light rounded-3 p-5 shadow">
             <form action="{{ route('register') }}" method="post" class="needs-validation" novalidate>
                 @csrf
                 <div class="mb-3">
