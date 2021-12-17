@@ -27,7 +27,7 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function logUserIn(LogUserInRequest $request): RedirectResponse
+    public function login(LogUserInRequest $request): RedirectResponse
     {
         $loggedSuccessfully = $this->userService->login($request);
         if ($loggedSuccessfully)

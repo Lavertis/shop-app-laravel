@@ -10,4 +10,6 @@ interface UserServiceInterface
     public function saveUser(Request $request): User;
 
     public function login(Request $request): bool;
+
+    public function logout();
 }

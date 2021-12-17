@@ -11301,6 +11301,7 @@ nav, footer {
   background-color: #5e0cbe;
 }
 
-.navbar-nav > li > .dropdown-menu > li > .dropdown-item:active {
+.navbar-nav > li > .dropdown-menu > li > .dropdown-item:active,
+.navbar-nav > li > .dropdown-menu > li > form > .dropdown-item:active {
   background-color: #7b1bea;
 }

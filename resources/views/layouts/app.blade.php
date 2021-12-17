@@ -39,8 +39,15 @@
                                 <a class="dropdown-item @if (Route::currentRouteName() === 'orders') active @endif"
                                    href="#">Orders</a>
                             </li>
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                            <li>
+                                <a class="dropdown-item" href="#">Profile</a>
+                            </li>
+                            <li>
+                                <form action="{{ route('logout') }}" method="post">
+                                    @csrf
+                                    <button class="dropdown-item" type="submit">Logout</button>
+                                </form>
+                            </li>
                         </ul>
                     </li>
                 @endauth
