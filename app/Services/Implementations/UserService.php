@@ -32,6 +32,7 @@ class UserService implements UserServiceInterface
     public function logout()
     {
         auth()->logout();
+        session()->flush();
     }
 
     /**
