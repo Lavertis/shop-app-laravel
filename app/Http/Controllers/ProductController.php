@@ -19,9 +19,18 @@ class ProductController extends Controller
         $this->productService = $productService;
     }
 
-    public function index(): Factory|View|Application
+    public function products(): Factory|View|Application
     {
         $products = $this->productService->getAllProducts();
-        return view('products', ['products' => $products]);
+        return view('product.products', ['products' => $products]);
+    }
+
+    public function productDetails(string $id): Factory|View|Application
+    {
+        $product = $this->productService->getProductById($id);
+        if (!$product)
+            return view('errors.404');
+        else
+            return view('product.productDetails', ['product' => $product]);
     }
 }

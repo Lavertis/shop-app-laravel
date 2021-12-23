@@ -11196,29 +11196,29 @@ textarea.form-control-lg {
     padding-left: 0 !important;
   }
 
-  .ps-xxl-1 {
-    padding-left: 0.25rem !important;
-  }
+    .ps-xxl-1 {
+        padding-left: 0.25rem !important;
+    }
 
-  .ps-xxl-2 {
-    padding-left: 0.5rem !important;
-  }
+    .ps-xxl-2 {
+        padding-left: 0.5rem !important;
+    }
 
-  .ps-xxl-3 {
-    padding-left: 1rem !important;
-  }
+    .ps-xxl-3 {
+        padding-left: 1rem !important;
+    }
 
-  .ps-xxl-4 {
-    padding-left: 1.5rem !important;
-  }
+    .ps-xxl-4 {
+        padding-left: 1.5rem !important;
+    }
 
-  .ps-xxl-5 {
-    padding-left: 3rem !important;
-  }
+    .ps-xxl-5 {
+        padding-left: 3rem !important;
+    }
 
-  .text-xxl-start {
-    text-align: left !important;
-  }
+    .text-xxl-start {
+        text-align: left !important;
+    }
 
     .text-xxl-end {
         text-align: right !important;
@@ -17441,5 +17441,9 @@ nav, footer {
 .product-card:hover {
     transform: scale(1.01);
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    z-index: 1;
+}
+
+.z-index-1 {
     z-index: 1;
 }

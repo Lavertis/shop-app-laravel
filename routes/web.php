@@ -31,4 +31,5 @@ Route::get('/logout', function () {
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 
-Route::get('/products', [ProductController::class, 'index'])->middleware('auth')->name('products');
+Route::get('/products', [ProductController::class, 'products'])->name('products');
+Route::get('/product/{id}', [ProductController::class, 'productDetails'])->name('productDetails');
