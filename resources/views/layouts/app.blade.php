@@ -28,6 +28,10 @@
             </ul>
             <ul class="navbar-nav ms-auto">
                 @auth()
+                    <li class="nav-item">
+                        <a class="nav-link @if (Route::currentRouteName() === 'basket') active @endif"
+                           href="{{ route('basket') }}"><i class="fa fa-shopping-cart"></i></a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                            data-bs-toggle="dropdown" aria-expanded="false">

@@ -25,8 +25,8 @@
                     </label>
                 </div>
                 <a href="#" class="btn btn-outline-success">
-                    <i class="fa fa-shopping-cart"></i>
-                    ADD TO CART
+                    <i class="fa fa-shopping-basket"></i>
+                    Add to basket
                 </a>
             </div>
 

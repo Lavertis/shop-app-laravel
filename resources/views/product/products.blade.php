@@ -23,11 +23,12 @@
                                     <h5 class="card-title">{{ $product['name'] }}</h5>
                                 </a>
                             </div>
-                            <div class="text-center mb-3">
-                                <h5 class="card-text mb-3">${{ $product->getPriceAsDecimal() }}</h5>
-                                <a href="#" class="btn btn-outline-success position-relative z-index-1">
-                                    <i class="fa fa-shopping-cart"></i>
-                                    ADD TO CART
+                            <div class="text-center mb-3 d-flex justify-content-around">
+                                <h5 class="card-text my-auto col-6 col-md-6">
+                                    ${{ $product->getPriceAsDecimal() }}
+                                </h5>
+                                <a href="#" class="btn btn-outline-success position-relative z-index-1 col-6 col-md-3">
+                                    <i class="fa fa-shopping-basket"></i>
                                 </a>
                             </div>
                         </div>
