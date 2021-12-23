@@ -20,6 +20,7 @@ class RegisterController extends Controller
     public function __construct(UserServiceInterface $userService)
     {
         $this->userService = $userService;
+        $this->middleware(['guest']);
     }
 
     public function index(): Factory|View|Application

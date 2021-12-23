@@ -20,6 +20,7 @@ class LoginController extends Controller
     public function __construct(UserServiceInterface $userService)
     {
         $this->userService = $userService;
+        $this->middleware(['guest']);
     }
 
     public function index(): Factory|View|Application
@@ -29,11 +30,15 @@ class LoginController extends Controller
 
     public function login(LoginRequest $request): RedirectResponse
     {
-        $loggedSuccessfully = $this->userService->login($request);
-        if ($loggedSuccessfully) {
+        $loggedInSuccessfully = $this->userService->login($request);
+        if ($loggedInSuccessfully) {
             $this->userService->logoutOtherDevices($request);
-            return redirect()->route('home');
-        } else
+            if (session()->has('url.intended'))
+                return redirect()->intended();
+            else
+                return redirect()->route('home');
+        }
+        else
             return back()->withInput()->with('status', 'Invalid login details');
     }
 }

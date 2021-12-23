@@ -18,6 +18,7 @@ class LogoutController extends Controller
     public function __construct(UserServiceInterface $userService)
     {
         $this->userService = $userService;
+        $this->middleware(['auth']);
     }
 
     public function logout(): Factory|View|Application
