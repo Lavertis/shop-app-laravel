@@ -1,7 +1,7 @@
 @extends('layouts.app', ['title' => 'Product details'])
 
 @section('content')
-    <div class="container my-5 col-11 col-lg-11 col-xl-9 col-xxl-7 bg-white">
+    <div class="container my-5 col-11 col-lg-11 col-xl-9 col-xxl-7 bg-white rounded shadow">
 
         <div class="d-lg-flex me-lg-4">
 

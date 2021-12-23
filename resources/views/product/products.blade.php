@@ -12,25 +12,31 @@
             </div>
 
             <div class="row m-0">
-                @foreach($products as $product)
-                    <div class="card product-card col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
-                        <img class="card-img-top mt-2" alt="{{ $product['name'] }}"
-                             src="{{ asset('images/products/'.$product['code'].'.jpg') }}">
-                        <div class="card-body px-1 text-center">
-                            <a href="{{ route('productDetails', $product['code']) }}"
-                               class="stretched-link text-decoration-none text-black">
-                                <h5 class="card-title">{{ $product['name'] }}</h5>
-                            </a>
+                @if($products->count())
+                    @foreach($products as $product)
+                        <div class="card product-card col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
+                            <img class="card-img-top mt-2" alt="{{ $product['name'] }}"
+                                 src="{{ asset('images/products/'.$product['code'].'.jpg') }}">
+                            <div class="card-body px-1 text-center">
+                                <a href="{{ route('productDetails', $product['code']) }}"
+                                   class="stretched-link text-decoration-none text-black">
+                                    <h5 class="card-title">{{ $product['name'] }}</h5>
+                                </a>
+                            </div>
+                            <div class="text-center mb-3">
+                                <h5 class="card-text mb-3">${{ $product->getPriceAsDecimal() }}</h5>
+                                <a href="#" class="btn btn-outline-success position-relative z-index-1">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    ADD TO CART
+                                </a>
+                            </div>
                         </div>
-                        <div class="text-center mb-3">
-                            <h5 class="card-text mb-3">${{ $product->getPriceAsDecimal() }}</h5>
-                            <a href="#" class="btn btn-outline-success position-relative z-index-1">
-                                <i class="fa fa-shopping-cart"></i>
-                                ADD TO CART
-                            </a>
-                        </div>
+                    @endforeach
+                @else
+                    <div class="alert alert-danger text-center">
+                        There are no products
                     </div>
-                @endforeach
+                @endif
             </div>
 
         </div>
