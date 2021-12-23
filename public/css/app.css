@@ -11220,13 +11220,13 @@ textarea.form-control-lg {
     text-align: left !important;
   }
 
-  .text-xxl-end {
-    text-align: right !important;
-  }
+    .text-xxl-end {
+        text-align: right !important;
+    }
 
-  .text-xxl-center {
-    text-align: center !important;
-  }
+    .text-xxl-center {
+        text-align: center !important;
+    }
 }
 
 @media (min-width: 1200px) {
@@ -17417,7 +17417,7 @@ body {
     /*background-color: #ffffff;*/
     /*background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);*/
     background-color: whitesmoke;
-    background-image: linear-gradient(315deg, whitesmoke 0%, #eff6ff 74%);
+    background-image: linear-gradient(315deg, whitesmoke 0%, #eaf2fd 74%);
 }
 
 nav, footer {

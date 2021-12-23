@@ -26,7 +26,7 @@ class UserService implements UserServiceInterface
 
     public function login(Request $request): bool
     {
-        return auth()->attempt($request->only('username', 'password'));
+        return auth()->attempt($request->only('username', 'password'), $request->get('remember'));
     }
 
     public function logout()
