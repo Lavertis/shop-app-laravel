@@ -20,4 +20,12 @@ class Product extends Model
         'description',
         'price',
     ];
+
+    public function getPriceAsDecimal(): string
+    {
+        $price = $this->getAttribute('price');
+        if (!strpos($price, '.'))
+            $price .= '.00';
+        return $price;
+    }
 }

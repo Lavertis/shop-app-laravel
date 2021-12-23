@@ -4,6 +4,7 @@ namespace App\Services\Implementations;
 
 use App\Models\Product;
 use App\Services\ProductServiceInterface;
+use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Class ProductService
@@ -11,8 +12,8 @@ use App\Services\ProductServiceInterface;
  */
 class ProductService implements ProductServiceInterface
 {
-    public function getAllProducts(): array
+    public function getAllProducts(): Collection|array
     {
-        return Product::all()->toArray();
+        return Product::all();
     }
 }

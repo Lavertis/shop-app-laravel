@@ -21,7 +21,7 @@
                         </a>
                     </div>
                     <div class="text-center mb-3">
-                        <h5 class="card-text mb-3">${{ $product['price'] }}</h5>
+                        <h5 class="card-text mb-3">${{ $product->getPriceAsDecimal() }}</h5>
                         <a href="#" class="btn btn-outline-success">
                             ADD TO CART
                         </a>
