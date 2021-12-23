@@ -11228,14 +11228,15 @@ textarea.form-control-lg {
     text-align: center !important;
   }
 }
-@media (min-width: 1200px) {
-  .fs-1 {
-    font-size: 2.5rem !important;
-  }
 
-  .fs-2 {
-    font-size: 2rem !important;
-  }
+@media (min-width: 1200px) {
+    .fs-1 {
+        font-size: 2.5rem !important;
+    }
+
+    .fs-2 {
+        font-size: 2rem !important;
+    }
 
     .fs-3 {
         font-size: 1.75rem !important;
@@ -17437,7 +17438,7 @@ nav, footer {
     background: linear-gradient(to right, #243f65, #457b9d, #a8dadc);
 }
 
-.card:hover {
+.product-card:hover {
     transform: scale(1.01);
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
     z-index: 1;

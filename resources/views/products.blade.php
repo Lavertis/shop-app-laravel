@@ -12,7 +12,7 @@
 
         <div class="row col-11 col-xl-9 col-xxl-9 mx-auto">
             @foreach($products as $product)
-                <div class="card col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-2">
+                <div class="card product-card col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-2">
                     <img class="card-img-top mt-2" alt="..."
                          src="{{ asset('images/products/'.$product['code'].'.jpg') }}">
                     <div class="card-body px-1 text-center">

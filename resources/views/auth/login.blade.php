@@ -4,7 +4,7 @@
     <div class="container container px-4 px-lg-5 my-auto h-100">
         <div class="col-10 col-sm-8 col-md-6 col-lg-5 col-xl-4 mx-auto bg-light rounded-3 p-5 shadow">
             @if(session()->has('status'))
-                <div class="text-danger">
+                <div class="alert alert-danger text-center">
                     {{ session()->get('status') }}
                 </div>
             @endif
