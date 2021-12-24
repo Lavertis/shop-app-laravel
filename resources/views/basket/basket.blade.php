@@ -6,8 +6,8 @@
 
             <div class="my-5">
                 <div class="text-white p-5 shadow-sm rounded banner-gradient">
-                    @if($basketItems->count())
-                        <h5 class="display-6">You have {{ $basketItems->count() }} item(s) in the basket</h5>
+                    @if($products->count())
+                        <h5 class="display-6">You have {{ $products->count() }} item(s) in the basket</h5>
                         <p class="lead">Proceed to checkout to place the order</p>
                     @else
                         <h5 class="display-6">Your basket is empty</h5>
@@ -17,21 +17,21 @@
             </div>
 
             <div class="row m-0">
-                @foreach($basketItems as $item)
+                @foreach($products as $product)
                     <div class="card d-flex flex-lg-row col-sm-6 col-lg-12">
 
-                        <div class="col-lg-2">
-                            <img src="{{ asset('images/products/'.$item->product['id'].'.jpg') }}"
-                                 alt="{{ $item->product['name'] }}" class="img-fluid">
+                        <div class="col-lg-2 mb-3">
+                            <img src="{{ asset('images/products/'.$product->id.'.jpg') }}"
+                                 alt="{{ $product->name }}" class="img-fluid">
                         </div>
 
                         <div class="card-body col-lg-10 d-flex flex-column flex-lg-row">
 
                             <div class="mx-auto col-lg-9 mb-4 my-lg-auto">
                                 <h5 class="card-title m-0 text-center text-lg-start">
-                                    <a href="{{ route('productDetails', $item->product['id']) }}"
+                                    <a href="{{ route('productDetails', $product->id) }}"
                                        class="text-decoration-none text-black underline-on-hover">
-                                        {{ $item->product['name'] }}
+                                        {{ $product->name }}
                                     </a>
                                 </h5>
                             </div>
@@ -41,7 +41,7 @@
                                 <div class="col-6 col-lg-auto">
                                     <select class="form-select" name="quantity" id="quantity">
                                         @foreach(range(1, 9) as $i)
-                                            @if($item['quantity'] == $i)
+                                            @if($product->pivot->quantity == $i)
                                                 <option value="{{ $i }}" selected>{{ $i }}</option>
                                             @else
                                                 <option value="{{ $i }}">{{ $i }}</option>

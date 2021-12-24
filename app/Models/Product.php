@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Product extends Model
 {
@@ -15,7 +16,7 @@ class Product extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'code',
+        'id',
         'name',
         'description',
         'price',
@@ -27,5 +28,10 @@ class Product extends Model
         if (!strpos($price, '.'))
             $price .= '.00';
         return $price;
+    }
+
+    public function baskets(): BelongsToMany
+    {
+        return $this->belongsToMany(Basket::class);
     }
 }

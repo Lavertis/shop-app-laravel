@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBasketItemsTable extends Migration
+class CreateBasketProductPivotTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateBasketItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('basket_items', function (Blueprint $table) {
-            $table->id();
+        Schema::create('basket_product', function (Blueprint $table) {
+            $table->primary(['basket_id', 'product_id']);
             $table->foreignId('basket_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('product_id')->unique()->constrained()->cascadeOnDelete();
-            $table->tinyInteger('quantity')->unsigned();
+            $table->foreignId('product_id')->constrained()->cascadeOnDelete();
+            $table->unsignedTinyInteger('quantity');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateBasketItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('basket_items');
+        Schema::dropIfExists('basket_product');
     }
 }

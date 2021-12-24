@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddToBasketRequest;
 use App\Services\BasketServiceInterface;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 
 class BasketController extends Controller
 {
@@ -23,17 +23,12 @@ class BasketController extends Controller
 
     public function index(): Factory|View|Application
     {
-        $basketItems = $this->basketService->getBasketItems();
-        return view('basket.basket', ['basketItems' => $basketItems]);
+        $products = $this->basketService->getProductsInBasket();
+        return view('basket.basket', ['products' => $products]);
     }
 
-    public function add(Request $request)
+    public function add(AddToBasketRequest $request)
     {
-        $this->validate($request, [
-            'product_id' => 'required',
-            'quantity' => ['required', 'min:1', 'max:9']
-        ]);
-
         return $this->basketService->addToBasket($request);
     }
 }

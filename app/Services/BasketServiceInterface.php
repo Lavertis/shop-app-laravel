@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 interface BasketServiceInterface
 {
-    public function getBasketItems();
+    public function getProductsInBasket();
 
     public function addToBasket(Request $request);
 }

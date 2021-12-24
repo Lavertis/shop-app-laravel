@@ -1,7 +1,6 @@
 <?php
 
 // @formatter:off
-
 /**
  * A helper file for your Eloquent Models
  * Copy the phpDocs from this file to the correct Model,
@@ -19,8 +18,8 @@ namespace App\Models {
      * @property int $user_id
      * @property \Illuminate\Support\Carbon|null $created_at
      * @property \Illuminate\Support\Carbon|null $updated_at
-     * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BasketItem[] $items
-     * @property-read int|null $items_count
+     * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Product[] $products
+     * @property-read int|null $products_count
      * @method static \Illuminate\Database\Eloquent\Builder|Basket newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder|Basket newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder|Basket query()
@@ -70,6 +69,8 @@ namespace App\Models {
      * @property float $price
      * @property \Illuminate\Support\Carbon|null $created_at
      * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Basket[] $baskets
+     * @property-read int|null $baskets_count
      * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder|Product newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder|Product query()
