@@ -15,8 +15,10 @@ class BasketService implements BasketServiceInterface
     private function makeSureBasketExists()
     {
         $basket = Auth::user()->basket;
-        if ($basket == null)
-            Auth::user()->basket()->create()->save(); //TODO needs to be invoked twice in order to work
+        if ($basket == null) {
+            Auth::user()->basket()->create()->save();
+            Auth::user()->refresh(); // without refresh view still gets null instead of newly created basket
+        }
     }
 
     public function getProductsInBasket()
@@ -31,8 +33,8 @@ class BasketService implements BasketServiceInterface
 
         $productId = $request->get('product_id');
         $quantity = $request->get('quantity');
-
         $alreadyExists = Auth::user()->basket->products()->where('product_id', '=', $productId)->first();
+
         if ($alreadyExists) {
             $currentQuantity = $alreadyExists->pivot->quantity;
             Auth::user()->basket->products()
