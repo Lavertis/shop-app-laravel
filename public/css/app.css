@@ -11180,21 +11180,21 @@ textarea.form-control-lg {
     padding-bottom: 0.5rem !important;
   }
 
-  .pb-xxl-3 {
-    padding-bottom: 1rem !important;
-  }
+    .pb-xxl-3 {
+        padding-bottom: 1rem !important;
+    }
 
-  .pb-xxl-4 {
-    padding-bottom: 1.5rem !important;
-  }
+    .pb-xxl-4 {
+        padding-bottom: 1.5rem !important;
+    }
 
-  .pb-xxl-5 {
-    padding-bottom: 3rem !important;
-  }
+    .pb-xxl-5 {
+        padding-bottom: 3rem !important;
+    }
 
-  .ps-xxl-0 {
-    padding-left: 0 !important;
-  }
+    .ps-xxl-0 {
+        padding-left: 0 !important;
+    }
 
     .ps-xxl-1 {
         padding-left: 0.25rem !important;
@@ -17446,4 +17446,8 @@ nav, footer {
 
 .z-index-1 {
     z-index: 1;
+}
+
+.underline-on-hover:hover {
+    text-decoration: underline !important;
 }

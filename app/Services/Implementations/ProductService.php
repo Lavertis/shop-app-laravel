@@ -19,6 +19,6 @@ class ProductService implements ProductServiceInterface
 
     public function getProductById(string $id): Product|null
     {
-        return Product::whereCode($id)->get()->first();
+        return Product::whereId($id)->first();
     }
 }

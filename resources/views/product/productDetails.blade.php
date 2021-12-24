@@ -6,7 +6,7 @@
         <div class="d-lg-flex me-lg-4">
 
             <div class="mt-4 col-12 col-lg-8">
-                <img src="{{ asset('images/products/'.$product['code'].'.jpg') }}"
+                <img src="{{ asset('images/products/'.$product['id'].'.jpg') }}"
                      class="img-fluid" alt="{{ $product['name'] }}">
             </div>
 

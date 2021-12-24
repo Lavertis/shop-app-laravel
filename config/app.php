@@ -180,6 +180,7 @@ return [
          */
         App\Providers\UserServiceProvider::class,
         App\Providers\ProductServiceProvider::class,
+        App\Providers\BasketServiceProvider::class,
     ],
 
     /*

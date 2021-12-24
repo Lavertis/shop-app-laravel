@@ -16,9 +16,9 @@
                     @foreach($products as $product)
                         <div class="card product-card col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
                             <img class="card-img-top mt-2" alt="{{ $product['name'] }}"
-                                 src="{{ asset('images/products/'.$product['code'].'.jpg') }}">
+                                 src="{{ asset('images/products/'.$product['id'].'.jpg') }}">
                             <div class="card-body px-1 text-center">
-                                <a href="{{ route('productDetails', $product['code']) }}"
+                                <a href="{{ route('productDetails', $product['id']) }}"
                                    class="stretched-link text-decoration-none text-black">
                                     <h5 class="card-title">{{ $product['name'] }}</h5>
                                 </a>

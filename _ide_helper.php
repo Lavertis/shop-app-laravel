@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.75.0.
+ * Generated for Laravel 8.76.1.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -12368,7 +12368,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Dump the request items and end the script.
          *
-         * @param array|mixed $keys
+         * @param mixed $keys
          * @return void
          * @static
          */
@@ -12381,7 +12381,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Dump the items.
          *
-         * @param array $keys
+         * @param mixed $keys
          * @return \Illuminate\Http\Request
          * @static
          */

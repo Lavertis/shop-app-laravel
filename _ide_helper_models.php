@@ -1,6 +1,7 @@
 <?php
 
 // @formatter:off
+
 /**
  * A helper file for your Eloquent Models
  * Copy the phpDocs from this file to the correct Model,
@@ -12,19 +13,72 @@
 
 namespace App\Models {
     /**
+     * App\Models\Basket
+     *
+     * @property int $id
+     * @property int $user_id
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BasketItem[] $items
+     * @property-read int|null $items_count
+     * @method static \Illuminate\Database\Eloquent\Builder|Basket newModelQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|Basket newQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|Basket query()
+     * @method static \Illuminate\Database\Eloquent\Builder|Basket whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Basket whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Basket whereUpdatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Basket whereUserId($value)
+     */
+    class Basket extends \Eloquent
+    {
+    }
+}
+
+namespace App\Models {
+    /**
+     * App\Models\BasketItem
+     *
+     * @property int $id
+     * @property int $basket_id
+     * @property int $product_id
+     * @property int $quantity
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property-read \App\Models\Product $product
+     * @method static \Illuminate\Database\Eloquent\Builder|BasketItem newModelQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|BasketItem newQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|BasketItem query()
+     * @method static \Illuminate\Database\Eloquent\Builder|BasketItem whereBasketId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|BasketItem whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|BasketItem whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|BasketItem whereProductId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|BasketItem whereQuantity($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|BasketItem whereUpdatedAt($value)
+     */
+    class BasketItem extends \Eloquent
+    {
+    }
+}
+
+namespace App\Models {
+    /**
      * App\Models\Product
      *
-     * @property int $code
+     * @property int $id
      * @property string $name
      * @property string|null $description
      * @property float $price
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property \Illuminate\Support\Carbon|null $updated_at
      * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder|Product newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder|Product query()
-     * @method static \Illuminate\Database\Eloquent\Builder|Product whereCode($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Product whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder|Product whereDescription($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Product whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder|Product whereName($value)
      * @method static \Illuminate\Database\Eloquent\Builder|Product wherePrice($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Product whereUpdatedAt($value)
      */
     class Product extends \Eloquent
     {
@@ -43,6 +97,7 @@ namespace App\Models {
      * @property string|null $remember_token
      * @property \Illuminate\Support\Carbon|null $created_at
      * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property-read \App\Models\Basket|null $basket
      * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
      * @property-read int|null $notifications_count
      * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
