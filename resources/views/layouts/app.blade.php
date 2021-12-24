@@ -77,6 +77,6 @@
         <p class="m-0 text-center text-white">Copyright &copy; Rafał Kuźmiczuk 2022</p>
     </div>
 </footer>
-<script src="{{ mix('js/app.js') }}"></script>
+<script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
 </body>
 </html>

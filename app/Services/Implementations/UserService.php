@@ -8,6 +8,7 @@ use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 /**
  * Class UserService
@@ -26,13 +27,13 @@ class UserService implements UserServiceInterface
 
     public function login(Request $request): bool
     {
-        return auth()->attempt($request->only('username', 'password'), $request->get('remember'));
+        return Auth::attempt($request->only('username', 'password'), $request->get('remember'));
     }
 
     public function logout()
     {
-        auth()->logout();
-        session()->flush();
+        Auth::logout();
+        Session::flush();
     }
 
     /**

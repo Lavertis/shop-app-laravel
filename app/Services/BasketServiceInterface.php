@@ -2,7 +2,11 @@
 
 namespace App\Services;
 
+use Illuminate\Http\Request;
+
 interface BasketServiceInterface
 {
-    public function getBasketItems(int $id);
+    public function getBasketItems();
+
+    public function addToBasket(Request $request);
 }

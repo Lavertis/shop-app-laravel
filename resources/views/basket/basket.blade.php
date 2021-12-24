@@ -7,7 +7,7 @@
             <div class="my-5">
                 <div class="text-white p-5 shadow-sm rounded banner-gradient">
                     @if($basketItems->count())
-                        <h5 class="display-6">You have {{ $basketItems->count() }} item(s) in basket</h5>
+                        <h5 class="display-6">You have {{ $basketItems->count() }} item(s) in the basket</h5>
                         <p class="lead">Proceed to checkout to place the order</p>
                     @else
                         <h5 class="display-6">Your basket is empty</h5>

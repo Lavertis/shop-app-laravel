@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container-fluid mb-5">
+{{--        @csrf--}}
         <div class="col-11 col-xl-9 col-xxl-7 mx-auto">
 
             <div class="my-5">
@@ -27,9 +28,10 @@
                                 <h5 class="card-text my-auto col-6 col-md-6">
                                     ${{ $product->getPriceAsDecimal() }}
                                 </h5>
-                                <a href="#" class="btn btn-outline-success position-relative z-index-1 col-6 col-md-3">
+                                <button class="btn btn-outline-success position-relative z-index-1 col-6 col-md-3"
+                                        name="add-to-basket" data-product-id="{{ $product['id'] }}">
                                     <i class="fa fa-shopping-basket"></i>
-                                </a>
+                                </button>
                             </div>
                         </div>
                     @endforeach
@@ -42,4 +44,12 @@
 
         </div>
     </div>
+    <script>
+        let buttons = document.getElementsByName('add-to-basket');
+        for (const button of buttons) {
+            button.addEventListener('click', function () {
+                addToBasket(this.dataset.productId, 1);
+            });
+        }
+    </script>
 @endsection

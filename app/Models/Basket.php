@@ -12,6 +12,6 @@ class Basket extends Model
 
     public function items(): HasMany
     {
-        return $this->hasMany(BasketItem::class, 'basket_id', 'id');
+        return $this->hasMany(BasketItem::class);
     }
 }

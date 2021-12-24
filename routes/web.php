@@ -36,3 +36,4 @@ Route::get('/products', [ProductController::class, 'products'])->name('products'
 Route::get('/product/{id}', [ProductController::class, 'productDetails'])->name('productDetails');
 
 Route::get('/basket', [BasketController::class, 'index'])->name('basket');
+Route::post('/basket/add', [BasketController::class, 'add']);

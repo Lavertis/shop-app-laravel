@@ -2,8 +2,9 @@
 
 namespace App\Services\Implementations;
 
-use App\Models\User;
 use App\Services\BasketServiceInterface;
+use Auth;
+use Illuminate\Http\Request;
 
 /**
  * Class BasketService
@@ -12,11 +13,13 @@ use App\Services\BasketServiceInterface;
 class BasketService implements BasketServiceInterface
 {
 
-    public function getBasketItems(int $id)
+    public function getBasketItems()
     {
-        $user = User::whereId($id)->first();
-        $basket = $user->basket;
-        $items = $basket->items;
-        return $items;
+        return Auth::user()->basket->items;
+    }
+
+    public function addToBasket(Request $request)
+    {
+        return Auth::user()->basket->items()->create($request->all());
     }
 }

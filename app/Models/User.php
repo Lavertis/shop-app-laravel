@@ -44,6 +44,6 @@ class User extends Authenticatable
 
     public function basket(): HasOne
     {
-        return $this->hasOne(Basket::class, 'user_id', 'id');
+        return $this->hasOne(Basket::class);
     }
 }
