@@ -1025,50 +1025,74 @@ eval("// shim for using process in browser\nvar process = module.exports = {};\n
             "use strict";
             module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
 
-/***/ })
+            /***/
+        })
 
-/******/ 	});
-/************************************************************************/
-/******/ 	// The module cache
-/******/ 	var __webpack_module_cache__ = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/ 		// Check if module is in cache
-/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
-/******/ 		if (cachedModule !== undefined) {
-/******/ 			return cachedModule.exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			id: moduleId,
-/******/ 			loaded: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.loaded = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = __webpack_modules__;
-/******/
-/************************************************************************/
-/******/ 	/* webpack/runtime/chunk loaded */
-/******/ 	(() => {
-/******/ 		var deferred = [];
-/******/ 		__webpack_require__.O = (result, chunkIds, fn, priority) => {
-/******/ 			if(chunkIds) {
-/******/ 				priority = priority || 0;
-/******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
-/******/ 				deferred[i] = [chunkIds, fn, priority];
-/******/ 				return;
+        /******/
+    });
+    /************************************************************************/
+    /******/ 	// The module cache
+    /******/
+    var __webpack_module_cache__ = {};
+    /******/
+    /******/ 	// The require function
+    /******/
+    function __webpack_require__(moduleId) {
+        /******/ 		// Check if module is in cache
+        /******/
+        var cachedModule = __webpack_module_cache__[moduleId];
+        /******/
+        if (cachedModule !== undefined) {
+            /******/
+            return cachedModule.exports;
+            /******/
+        }
+        /******/ 		// Create a new module (and put it into the cache)
+        /******/
+        var module = __webpack_module_cache__[moduleId] = {
+            /******/            id: moduleId,
+            /******/            loaded: false,
+            /******/            exports: {}
+            /******/
+        };
+        /******/
+        /******/ 		// Execute the module function
+        /******/
+        __webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+        /******/
+        /******/ 		// Flag the module as loaded
+        /******/
+        module.loaded = true;
+        /******/
+        /******/ 		// Return the exports of the module
+        /******/
+        return module.exports;
+        /******/
+    }
+
+    /******/
+    /******/ 	// expose the modules object (__webpack_modules__)
+    /******/
+    __webpack_require__.m = __webpack_modules__;
+    /******/
+    /************************************************************************/
+    /******/ 	/* webpack/runtime/chunk loaded */
+    /******/
+    (() => {
+        /******/
+        var deferred = [];
+        /******/
+        __webpack_require__.O = (result, chunkIds, fn, priority) => {
+            /******/
+            if (chunkIds) {
+                /******/
+                priority = priority || 0;
+                /******/
+                for (var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
+                /******/
+                deferred[i] = [chunkIds, fn, priority];
+                /******/
+                return;
 /******/ 			}
 /******/ 			var notFulfilled = Infinity;
 /******/ 			for (var i = 0; i < deferred.length; i++) {
@@ -1081,128 +1105,204 @@ eval("// shim for using process in browser\nvar process = module.exports = {};\n
 /******/ 						fulfilled = false;
 /******/ 						if(priority < notFulfilled) notFulfilled = priority;
 /******/ 					}
-/******/ 				}
-/******/ 				if(fulfilled) {
-/******/ 					deferred.splice(i--, 1)
-/******/ 					var r = fn();
-/******/ 					if (r !== undefined) result = r;
-/******/ 				}
-/******/ 			}
-/******/ 			return result;
-/******/ 		};
-/******/ 	})();
-/******/
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/
-/******/ 	/* webpack/runtime/global */
-/******/ 	(() => {
-/******/ 		__webpack_require__.g = (function() {
-/******/ 			if (typeof globalThis === 'object') return globalThis;
-/******/ 			try {
-/******/ 				return this || new Function('return this')();
-/******/ 			} catch (e) {
-/******/ 				if (typeof window === 'object') return window;
-/******/ 			}
-/******/ 		})();
-/******/ 	})();
-/******/
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/
-/******/ 	/* webpack/runtime/node module decorator */
-/******/ 	(() => {
-/******/ 		__webpack_require__.nmd = (module) => {
-/******/ 			module.paths = [];
-/******/ 			if (!module.children) module.children = [];
-/******/ 			return module;
-/******/ 		};
-/******/ 	})();
-/******/
-/******/ 	/* webpack/runtime/jsonp chunk loading */
-/******/ 	(() => {
-/******/ 		// no baseURI
-/******/
-/******/ 		// object to store loaded and loading chunks
-/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
-/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
-/******/ 		var installedChunks = {
-/******/ 			"/js/app": 0,
-/******/ 			"css/app": 0
-/******/ 		};
-/******/
-/******/ 		// no chunk on demand loading
-/******/
-/******/ 		// no prefetching
-/******/
-/******/ 		// no preloaded
-/******/
-/******/ 		// no HMR
-/******/
-/******/ 		// no HMR manifest
-/******/
-/******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
-/******/
-/******/ 		// install a JSONP callback for chunk loading
-/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
-/******/ 			var [chunkIds, moreModules, runtime] = data;
-/******/ 			// add "moreModules" to the modules object,
-/******/ 			// then flag all "chunkIds" as loaded and fire callback
-/******/ 			var moduleId, chunkId, i = 0;
-/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
-/******/ 				for(moduleId in moreModules) {
-/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
-/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
+                    /******/
+                }
+                /******/
+                if (fulfilled) {
+                    /******/
+                    deferred.splice(i--, 1)
+                    /******/
+                    var r = fn();
+                    /******/
+                    if (r !== undefined) result = r;
+                    /******/
+                }
+                /******/
+            }
+            /******/
+            return result;
+            /******/
+        };
+        /******/
+    })();
+    /******/
+    /******/ 	/* webpack/runtime/define property getters */
+    /******/
+    (() => {
+        /******/ 		// define getter functions for harmony exports
+        /******/
+        __webpack_require__.d = (exports, definition) => {
+            /******/
+            for (var key in definition) {
+                /******/
+                if (__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+                    /******/
+                    Object.defineProperty(exports, key, {enumerable: true, get: definition[key]});
+                    /******/
+                }
+                /******/
+            }
+            /******/
+        };
+        /******/
+    })();
+    /******/
+    /******/ 	/* webpack/runtime/global */
+    /******/
+    (() => {
+        /******/
+        __webpack_require__.g = (function () {
+            /******/
+            if (typeof globalThis === 'object') return globalThis;
+            /******/
+            try {
+                /******/
+                return this || new Function('return this')();
+                /******/
+            } catch (e) {
+                /******/
+                if (typeof window === 'object') return window;
+                /******/
+            }
+            /******/
+        })();
+        /******/
+    })();
+    /******/
+    /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+    /******/
+    (() => {
+        /******/
+        __webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+        /******/
+    })();
+    /******/
+    /******/ 	/* webpack/runtime/make namespace object */
+    /******/
+    (() => {
+        /******/ 		// define __esModule on exports
+        /******/
+        __webpack_require__.r = (exports) => {
+            /******/
+            if (typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+                /******/
+                Object.defineProperty(exports, Symbol.toStringTag, {value: 'Module'});
+                /******/
+            }
+            /******/
+            Object.defineProperty(exports, '__esModule', {value: true});
+            /******/
+        };
+        /******/
+    })();
+    /******/
+    /******/ 	/* webpack/runtime/node module decorator */
+    /******/
+    (() => {
+        /******/
+        __webpack_require__.nmd = (module) => {
+            /******/
+            module.paths = [];
+            /******/
+            if (!module.children) module.children = [];
+            /******/
+            return module;
+            /******/
+        };
+        /******/
+    })();
+    /******/
+    /******/ 	/* webpack/runtime/jsonp chunk loading */
+    /******/
+    (() => {
+        /******/ 		// no baseURI
+        /******/
+        /******/ 		// object to store loaded and loading chunks
+        /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+        /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+        /******/
+        var installedChunks = {
+            /******/            "/js/app": 0,
+            /******/            "css/app": 0
+            /******/
+        };
+        /******/
+        /******/ 		// no chunk on demand loading
+        /******/
+        /******/ 		// no prefetching
+        /******/
+        /******/ 		// no preloaded
+        /******/
+        /******/ 		// no HMR
+        /******/
+        /******/ 		// no HMR manifest
+        /******/
+        /******/
+        __webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
+        /******/
+        /******/ 		// install a JSONP callback for chunk loading
+        /******/
+        var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
+            /******/
+            var [chunkIds, moreModules, runtime] = data;
+            /******/ 			// add "moreModules" to the modules object,
+            /******/ 			// then flag all "chunkIds" as loaded and fire callback
+            /******/
+            var moduleId, chunkId, i = 0;
+            /******/
+            if (chunkIds.some((id) => (installedChunks[id] !== 0))) {
+                /******/
+                for (moduleId in moreModules) {
+                    /******/
+                    if (__webpack_require__.o(moreModules, moduleId)) {
+                        /******/
+                        __webpack_require__.m[moduleId] = moreModules[moduleId];
 /******/ 					}
 /******/ 				}
 /******/ 				if(runtime) var result = runtime(__webpack_require__);
 /******/ 			}
-/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
-/******/ 			for(;i < chunkIds.length; i++) {
-/******/ 				chunkId = chunkIds[i];
-/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
-/******/ 					installedChunks[chunkId][0]();
-/******/ 				}
-/******/ 				installedChunks[chunkIds[i]] = 0;
-/******/ 			}
-/******/ 			return __webpack_require__.O(result);
-/******/ 		}
-/******/
-/******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
-/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
-/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
-/******/ 	})();
-/******/
-/************************************************************************/
-/******/
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/sass/app.scss")))
-/******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
-/******/
-/******/ })()
+            /******/
+            if (parentChunkLoadingFunction) parentChunkLoadingFunction(data);
+            /******/
+            for (; i < chunkIds.length; i++) {
+                /******/
+                chunkId = chunkIds[i];
+                /******/
+                if (__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+                    /******/
+                    installedChunks[chunkId][0]();
+                    /******/
+                }
+                /******/
+                installedChunks[chunkIds[i]] = 0;
+                /******/
+            }
+            /******/
+            return __webpack_require__.O(result);
+            /******/
+        }
+        /******/
+        /******/
+        var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
+        /******/
+        chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
+        /******/
+        chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+        /******/
+    })();
+    /******/
+    /************************************************************************/
+    /******/
+    /******/ 	// startup
+    /******/ 	// Load entry module and return exports
+    /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
+    /******/
+    __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
+    /******/
+    var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/sass/app.scss")))
+    /******/
+    __webpack_exports__ = __webpack_require__.O(__webpack_exports__);
+    /******/
+    /******/
+})()
 ;
