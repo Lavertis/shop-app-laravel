@@ -29,7 +29,7 @@
 
                             <div class="mx-auto col-lg-9 mb-4 my-lg-auto">
                                 <h5 class="card-title m-0 text-center text-lg-start">
-                                    <a href="{{ route('productDetails', $product->id) }}"
+                                    <a href="{{ route('product.details', $product->id) }}"
                                        class="text-decoration-none text-black underline-on-hover">
                                         {{ $product->name }}
                                     </a>
@@ -51,7 +51,9 @@
                                 </div>
 
                                 <div class="px-1 col-6 col-lg-auto">
-                                    <form method="post">
+                                    <form action="{{ route('basket.delete') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
                                         <div class="d-grid">
                                             <button type="submit" class="btn bg-danger">
                                                 <i class="fa fa-trash text-white"></i>

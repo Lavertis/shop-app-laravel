@@ -42,4 +42,10 @@ class BasketService implements BasketServiceInterface
         else
             Auth::user()->basket->products()->attach($productId, $request->only('quantity'));
     }
+
+    public function removeFromBasket(Request $request): int
+    {
+        $productId = $request->get('product_id');
+        return Auth::user()->basket->products()->detach($productId);
+    }
 }

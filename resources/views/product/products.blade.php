@@ -19,7 +19,7 @@
                             <img class="card-img-top mt-2" alt="{{ $product['name'] }}"
                                  src="{{ asset('images/products/'.$product['id'].'.jpg') }}">
                             <div class="card-body px-1 text-center">
-                                <a href="{{ route('productDetails', $product['id']) }}"
+                                <a href="{{ route('product.details', $product['id']) }}"
                                    class="stretched-link text-decoration-none text-black">
                                     <h5 class="card-title">{{ $product['name'] }}</h5>
                                 </a>

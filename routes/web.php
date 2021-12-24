@@ -33,7 +33,8 @@ Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 
 Route::get('/products', [ProductController::class, 'products'])->name('products');
-Route::get('/product/{id}', [ProductController::class, 'productDetails'])->name('productDetails');
+Route::get('/product/{id}', [ProductController::class, 'productDetails'])->name('product.details');
 
 Route::get('/basket', [BasketController::class, 'index'])->name('basket');
-Route::post('/basket/add', [BasketController::class, 'add']);
+Route::post('/basket/add', [BasketController::class, 'add'])->name('basket.add');
+Route::post('/basket/delete', [BasketController::class, 'delete'])->name('basket.delete');
