@@ -25,7 +25,7 @@
                                 </a>
                             </div>
                             <div class="text-center mb-3 d-flex justify-content-around">
-                                <h5 class="card-text my-auto col-6 col-md-6">
+                                <h5 class="card-text my-auto col-6 col-xxl-auto">
                                     $<span>{{ number_format($product->price, 2) }}</span>
                                 </h5>
                                 <button class="btn btn-outline-success position-relative z-index-1 col-6 col-md-3"

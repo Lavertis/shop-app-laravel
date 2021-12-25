@@ -10,12 +10,12 @@
                 </div>
             @endif
 
-            <form action="{{ route('login') }}" method="post" class="needs-validation" novalidate>
+            <form action="{{ route('login') }}" method="post" class="needs-validation">
                 @csrf
 
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
-                    <input type="text" name="username" id="username" value="{{ old('username') }}"
+                    <input type="text" name="username" id="username" value="{{ old('username') }}" required
                            class="form-control @error('username') is-invalid @enderror">
                     @error('username')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -24,7 +24,7 @@
 
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" name="password" id="password"
+                    <input type="password" name="password" id="password" required
                            class="form-control @error('password') is-invalid @enderror">
                     @error('password')
                     <div class="invalid-feedback">{{ $message }}</div>
