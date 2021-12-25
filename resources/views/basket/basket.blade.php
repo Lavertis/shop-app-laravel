@@ -20,7 +20,7 @@
                 @foreach($products as $product)
                     <div class="card d-flex flex-lg-row col-sm-6 col-lg-12">
 
-                        <div class="col-lg-2 mb-3">
+                        <div class="col-lg-2 my-2">
                             <img src="{{ asset('images/products/'.$product->id.'.jpg') }}"
                                  alt="{{ $product->name }}" class="img-fluid">
                         </div>

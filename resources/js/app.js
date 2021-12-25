@@ -8,7 +8,7 @@ window.addToBasket = function (productId, quantity) {
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload = function () {
         if (xhr.status === 200) {
-            console.log('success')
+            console.log('Product added to basket')
             console.log(xhr.responseText);
         }
     };
