@@ -25,7 +25,7 @@ class AddToBasketRequest extends FormRequest
     {
         return [
             'product_id' => ['required', 'numeric'],
-            'quantity' => ['required', 'min:1']
+            'quantity' => ['required', 'min:1', 'max:100']
         ];
     }
 }
