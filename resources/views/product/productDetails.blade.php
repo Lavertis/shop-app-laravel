@@ -24,6 +24,8 @@
                     </label>
                 </div>
                 <button class="btn btn-outline-success" id="add-to-basket" data-product-id="{{ $product->id }}">
+                    <span class="spinner-border spinner-border-sm"
+                          role="status" aria-hidden="true" hidden></span>
                     <i class="fa fa-shopping-basket"></i>
                     Add to basket
                 </button>
@@ -38,9 +40,22 @@
     </div>
     <script>
         let button = document.getElementById('add-to-basket');
-        button.addEventListener('click', function () {
+        button.addEventListener('click', async function () {
+            if (this.dataset.onClickEnabled === 'false')
+                return;
+            this.dataset.onClickEnabled = 'false';
+            let loadingSpinner = button.getElementsByTagName('span')[0];
+            let basketIcon = button.getElementsByTagName('i')[0];
+            basketIcon.hidden = true;
+            loadingSpinner.hidden = false;
+
             let quantity = document.getElementById('quantity').value;
             addToBasket(this.dataset.productId, quantity);
+            await sleep(1000);
+
+            loadingSpinner.hidden = true;
+            basketIcon.hidden = false;
+            this.dataset.onClickEnabled = 'true';
         });
     </script>
 @endsection

@@ -18,3 +18,7 @@ window.addToBasket = function (productId, quantity) {
         quantity: quantity,
     }));
 }
+
+window.sleep = function (ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
