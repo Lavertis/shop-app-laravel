@@ -11,7 +11,7 @@
 
             <div class="my-auto text-center col-12 col-lg-4 border rounded-3 p-3">
                 <div>
-                    <h4>${{ $product->getPriceAsDecimal() }}</h4>
+                    <h4>$<span>{{ number_format($product->price, 2) }}</span></h4>
                 </div>
                 <div class="d-inline-block my-2">
                     <label for="quantity">

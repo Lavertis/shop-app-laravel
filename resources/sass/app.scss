@@ -58,3 +58,16 @@ nav, footer {
 .underline-on-hover:hover {
     text-decoration: underline !important;
 }
+
+.no-focus-border:focus, .no-active-border:active {
+    outline: none;
+    box-shadow: none;
+}
+
+.pointer-events-none {
+    pointer-events: none;
+}
+
+.w-fit-content {
+    width: fit-content;
+}

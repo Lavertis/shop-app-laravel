@@ -22,14 +22,6 @@ class Product extends Model
         'price',
     ];
 
-    public function getPriceAsDecimal(): string
-    {
-        $price = $this->getAttribute('price');
-        if (!strpos($price, '.'))
-            $price .= '.00';
-        return $price;
-    }
-
     public function baskets(): BelongsToMany
     {
         return $this->belongsToMany(Basket::class);

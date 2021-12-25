@@ -16,20 +16,20 @@
                 @if($products->count())
                     @foreach($products as $product)
                         <div class="card product-card col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
-                            <img class="card-img-top mt-2" alt="{{ $product['name'] }}"
-                                 src="{{ asset('images/products/'.$product['id'].'.jpg') }}">
+                            <img class="card-img-top mt-2" alt="{{ $product->name }}"
+                                 src="{{ asset('images/products/'.$product->id.'.jpg') }}">
                             <div class="card-body px-1 text-center">
-                                <a href="{{ route('product.details', $product['id']) }}"
+                                <a href="{{ route('product.details', $product->id) }}"
                                    class="stretched-link text-decoration-none text-black">
-                                    <h5 class="card-title">{{ $product['name'] }}</h5>
+                                    <h5 class="card-title">{{ $product->name }}</h5>
                                 </a>
                             </div>
                             <div class="text-center mb-3 d-flex justify-content-around">
                                 <h5 class="card-text my-auto col-6 col-md-6">
-                                    ${{ $product->getPriceAsDecimal() }}
+                                    $<span>{{ number_format($product->price, 2) }}</span>
                                 </h5>
                                 <button class="btn btn-outline-success position-relative z-index-1 col-6 col-md-3"
-                                        name="add-to-basket" data-product-id="{{ $product['id'] }}">
+                                        name="add-to-basket" data-product-id="{{ $product->id }}">
                                     <span class="spinner-border spinner-border-sm"
                                           role="status" aria-hidden="true" hidden></span>
                                     <i class="fa fa-shopping-basket"></i>

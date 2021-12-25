@@ -7,7 +7,15 @@
             <div class="my-5">
                 <div class="text-white p-5 shadow-sm rounded banner-gradient">
                     @if($products->count())
-                        <h5 class="display-6">You have {{ $products->count() }} item(s) in the basket</h5>
+                        <h5 class="display-6">
+                            You have {{ $products->count() }}
+                            @if($products->count() > 1)
+                                items
+                            @else()
+                                item
+                            @endif
+                            in the basket
+                        </h5>
                         <p class="lead">Proceed to checkout to place the order</p>
                     @else
                         <h5 class="display-6">Your basket is empty</h5>
@@ -18,16 +26,16 @@
 
             <div class="row m-0">
                 @foreach($products as $product)
-                    <div class="card d-flex flex-lg-row col-sm-6 col-lg-12">
+                    <div class="card d-flex flex-lg-row col-sm-6 col-lg-12 basket-item">
 
                         <div class="col-lg-2 my-2">
                             <img src="{{ asset('images/products/'.$product->id.'.jpg') }}"
                                  alt="{{ $product->name }}" class="img-fluid">
                         </div>
 
-                        <div class="card-body col-lg-10 d-flex flex-column flex-lg-row">
+                        <div class="card-body col-lg-10 d-flex flex-column flex-lg-row justify-content-around">
 
-                            <div class="mx-auto col-lg-9 mb-4 my-lg-auto">
+                            <div class="mx-auto col-lg-6 col-xxl-6 mb-4 my-lg-auto">
                                 <h5 class="card-title m-0 text-center text-lg-start">
                                     <a href="{{ route('product.details', $product->id) }}"
                                        class="text-decoration-none text-black underline-on-hover">
@@ -36,26 +44,33 @@
                                 </h5>
                             </div>
 
-                            <div
-                                class="col-lg-3 mt-auto my-lg-auto d-flex justify-content-around justify-content-lg-end">
-                                <div class="col-6 col-lg-auto">
-                                    <select class="form-select" name="quantity" id="quantity">
-                                        @foreach(range(1, 9) as $i)
-                                            @if($product->pivot->quantity == $i)
-                                                <option value="{{ $i }}" selected>{{ $i }}</option>
-                                            @else
-                                                <option value="{{ $i }}">{{ $i }}</option>
-                                            @endif
-                                        @endforeach
-                                    </select>
+                            <div class="mt-auto mb-4 my-lg-auto mx-auto col-lg-2 col-xxl-3">
+                                <h5 class="card-title m-0 text-center">
+                                    $<span class="price" data-product-base-price="{{ $product->price }}"
+                                    >{{ number_format($product->price * $product->pivot->quantity, 2, '.', '') }}
+                                    </span>
+                                </h5>
+                            </div>
+
+                            <div class="col-auto my-lg-auto d-flex">
+                                <div class="input-group">
+                                    <button class="btn btn-outline-dark fa fa-minus no-focus-border"
+                                            @if($product->pivot->quantity === 1) disabled @endif>
+                                    </button>
+                                    <input type="text" size="3" readonly
+                                           value="{{ $product->pivot->quantity }}" data-product-id="{{ $product->id }}"
+                                           class="form-control text-center bg-white quantity pointer-events-none">
+                                    <button class="btn btn-outline-dark fa fa-plus no-focus-border"
+                                            @if($product->pivot->quantity === 99) disabled @endif>
+                                    </button>
                                 </div>
 
-                                <div class="px-1 col-6 col-lg-auto">
+                                <div class="px-2 col-6 col-sm-4 col-md-6 col-lg-auto">
                                     <form action="{{ route('basket.delete') }}" method="post">
                                         @csrf
                                         <input type="hidden" name="product_id" value="{{ $product->id }}">
                                         <div class="d-grid">
-                                            <button type="submit" class="btn bg-danger">
+                                            <button type="submit" class="btn btn-danger">
                                                 <i class="fa fa-trash text-white"></i>
                                             </button>
                                         </div>
@@ -71,4 +86,42 @@
 
         </div>
     </div>
+    <script>
+        let basketItems = document.getElementsByClassName('basket-item');
+
+        for (const element of basketItems) {
+            let quantityPrice = element.getElementsByClassName('price')[0];
+            let input = element.getElementsByClassName('quantity')[0];
+            let minusButton = element.getElementsByClassName('fa-minus')[0];
+            let plusButton = element.getElementsByClassName('fa-plus')[0];
+            let productId = input.dataset.productId;
+            let productBasePrice = quantityPrice.dataset.productBasePrice;
+
+            minusButton.addEventListener('click', function () {
+                if (input.value === '2')
+                    minusButton.disabled = true;
+                else if (input.value === '99')
+                    plusButton.disabled = false;
+
+                const quantity = parseInt(input.value) - 1;
+                changeBasketProductQuantity(productId, quantity);
+                input.value = quantity.toString();
+                quantityPrice.textContent = (productBasePrice * quantity).toFixed(2);
+                console.log('-');
+            })
+
+            plusButton.addEventListener('click', function () {
+                if (input.value === '1')
+                    minusButton.disabled = false;
+                else if (input.value === '98')
+                    plusButton.disabled = true;
+
+                const quantity = parseInt(input.value) + 1;
+                changeBasketProductQuantity(productId, quantity);
+                input.value = quantity.toString();
+                quantityPrice.textContent = (productBasePrice * quantity).toFixed(2);
+                console.log('+');
+            })
+        }
+    </script>
 @endsection

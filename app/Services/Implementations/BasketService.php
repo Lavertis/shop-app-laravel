@@ -12,6 +12,11 @@ use Illuminate\Http\Request;
  */
 class BasketService implements BasketServiceInterface
 {
+    private function isQuantityValid(int $quantity): bool
+    {
+        return $quantity >= 1 && $quantity <= 99;
+    }
+
     private function makeSureBasketExists()
     {
         $basket = Auth::user()->basket;
@@ -32,15 +37,31 @@ class BasketService implements BasketServiceInterface
         $this->makeSureBasketExists();
 
         $productId = $request->get('product_id');
-        $quantity = $request->get('quantity');
         $product = Auth::user()->basket->products()->find($productId);
+        $quantity = intval($request->get('quantity'));
 
         if ($product != null) {
-            $product->pivot->quantity += $quantity;
-            $product->pivot->save();
+            $currentQuantity = $product->pivot->quantity;
+            if ($this->isQuantityValid($quantity + $currentQuantity)) {
+                $product->pivot->quantity += $quantity;
+                $product->pivot->save();
+            }
         }
         else
             Auth::user()->basket->products()->attach($productId, $request->only('quantity'));
+    }
+
+    public function changeProductQuantity(Request $request): int
+    {
+        $productId = $request->get('product_id');
+        $quantity = $request->get('quantity');
+        $product = Auth::user()->basket->products()->find($productId);
+        if ($this->isQuantityValid($quantity)) {
+            $product->pivot->quantity = $quantity;
+            $product->pivot->save();
+        }
+
+        return $product->pivot->quantity;
     }
 
     public function removeFromBasket(Request $request): int

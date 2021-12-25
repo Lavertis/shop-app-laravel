@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AddToBasketRequest;
+use App\Http\Requests\AddOrUpdateBasketItemRequest;
 use App\Services\BasketServiceInterface;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -29,9 +29,14 @@ class BasketController extends Controller
         return view('basket.basket', ['products' => $products]);
     }
 
-    public function add(AddToBasketRequest $request)
+    public function add(AddOrUpdateBasketItemRequest $request)
     {
         return $this->basketService->addToBasket($request);
+    }
+
+    public function update(AddOrUpdateBasketItemRequest $request)
+    {
+        return $this->basketService->changeProductQuantity($request);
     }
 
     public function delete(Request $request): RedirectResponse

@@ -37,4 +37,5 @@ Route::get('/product/{id}', [ProductController::class, 'productDetails'])->name(
 
 Route::get('/basket', [BasketController::class, 'index'])->name('basket');
 Route::post('/basket/add', [BasketController::class, 'add'])->name('basket.add');
+Route::patch('/basket/update', [BasketController::class, 'update'])->name('basket.update');
 Route::post('/basket/delete', [BasketController::class, 'delete'])->name('basket.delete');
