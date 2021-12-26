@@ -33,8 +33,8 @@
 
         </div>
         <hr>
-        <div class="container p-4 pt-3">
-            <h3>Description</h3>
+        <div class="container p-4 pt-1">
+            <h3 class="">Description</h3>
             {{ $product->description }}
         </div>
     </div>
