@@ -1,6 +1,6 @@
 require('./bootstrap');
 
-window.addToBasket = function (productId, quantity) {
+window.sendAddToBasketRequest = function (productId, quantity) {
     let _token = document.getElementsByName('_token')[0].value; // from logout button
 
     const xhr = new XMLHttpRequest();
@@ -8,7 +8,7 @@ window.addToBasket = function (productId, quantity) {
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload = function () {
         if (xhr.status === 200) {
-            console.log('Product added to basket')
+            console.log(`${quantity} product(s) ${productId} added to basket`)
             // console.log(xhr.responseText);
         }
     };
@@ -19,7 +19,7 @@ window.addToBasket = function (productId, quantity) {
     }));
 }
 
-window.changeBasketProductQuantity = function (productId, quantity) {
+window.sendChangeBasketProductQuantityRequest = function (productId, quantity) {
     let _token = document.getElementsByName('_token')[0].value; // from logout button
 
     const xhr = new XMLHttpRequest();
@@ -27,7 +27,7 @@ window.changeBasketProductQuantity = function (productId, quantity) {
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload = function () {
         if (xhr.status === 200) {
-            console.log('Quantity changed to', xhr.responseText);
+            console.log(`Product ${productId} quantity changed to`, xhr.responseText);
         }
     };
     xhr.setRequestHeader('X-CSRF-TOKEN', _token);

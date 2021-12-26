@@ -2,16 +2,15 @@
 
 namespace App\Services;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 
 interface UserServiceInterface
 {
-    public function saveUser(Request $request): User;
+    public function saveUser(Request $request);
 
-    public function login(Request $request): bool;
+    public function login(Request $request);
 
     public function logout();
 
-    public function logoutOtherDevices(Request $request): User|bool|null;
+    public function logoutOtherDevices(Request $request);
 }

@@ -33,6 +33,7 @@ Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 
 Route::get('/products', [ProductController::class, 'products'])->name('products');
+Route::get('/products/filtered', [ProductController::class, 'productsFiltered'])->name('products.filtered');
 Route::get('/product/{id}', [ProductController::class, 'productDetails'])->name('product.details');
 
 Route::get('/basket', [BasketController::class, 'index'])->name('basket');

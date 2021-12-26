@@ -38,6 +38,9 @@
             {{ $product->description }}
         </div>
     </div>
+@endsection
+
+@section('js')
     <script>
         let button = document.getElementById('add-to-basket');
         button.addEventListener('click', async function () {
@@ -50,7 +53,7 @@
             loadingSpinner.hidden = false;
 
             let quantity = document.getElementById('quantity').value;
-            addToBasket(this.dataset.productId, quantity);
+            sendAddToBasketRequest(this.dataset.productId, quantity);
             await sleep(1000);
 
             loadingSpinner.hidden = true;

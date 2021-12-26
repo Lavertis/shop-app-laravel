@@ -86,6 +86,9 @@
 
         </div>
     </div>
+@endsection
+
+@section('js')
     <script>
         let basketItems = document.getElementsByClassName('basket-item');
 
@@ -104,10 +107,9 @@
                     plusButton.disabled = false;
 
                 const quantity = parseInt(input.value) - 1;
-                changeBasketProductQuantity(productId, quantity);
+                sendChangeBasketProductQuantityRequest(productId, quantity);
                 input.value = quantity.toString();
                 quantityPrice.textContent = (productBasePrice * quantity).toFixed(2);
-                console.log('-');
             })
 
             plusButton.addEventListener('click', function () {
@@ -117,10 +119,9 @@
                     plusButton.disabled = true;
 
                 const quantity = parseInt(input.value) + 1;
-                changeBasketProductQuantity(productId, quantity);
+                sendChangeBasketProductQuantityRequest(productId, quantity);
                 input.value = quantity.toString();
                 quantityPrice.textContent = (productBasePrice * quantity).toFixed(2);
-                console.log('+');
             })
         }
     </script>
