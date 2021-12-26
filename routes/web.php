@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -46,3 +47,5 @@ Route::get('/basket', [BasketController::class, 'index'])->name('basket');
 Route::post('/basket/add', [BasketController::class, 'add'])->name('basket.add');
 Route::patch('/basket/update', [BasketController::class, 'update'])->name('basket.update');
 Route::post('/basket/delete', [BasketController::class, 'delete'])->name('basket.delete');
+
+Route::get('/checkout', [OrderController::class, 'checkout'])->name('order.checkout');

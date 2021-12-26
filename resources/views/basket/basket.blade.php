@@ -82,6 +82,25 @@
 
                     </div>
                 @endforeach
+
+                @if($products->isNotEmpty())
+                    <div class="card p-3 my-4">
+                        <div class="col-12 ms-auto d-flex flex-column flex-sm-row justify-content-between">
+                            <div class="mb-3 my-sm-auto col-12 col-sm-8 col-md-6 col-lg-auto text-center">
+                                <h5 class="m-0">
+                                    Total price:&nbsp
+                                    <b>$<span id="final-price"></span></b>
+                                </h5>
+                            </div>
+                            <div class="col-12 col-sm-4 col-md-6 col-lg-3">
+                                <a class="btn btn-success col-12" href="{{ route('order.checkout') }}">
+                                    Checkout
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
             </div>
 
         </div>
@@ -90,8 +109,22 @@
 
 @section('js')
     <script>
-        let basketItems = document.getElementsByClassName('basket-item');
+        // Calculate final price
+        function calculateFinalPrice() {
+            let basketItems = document.getElementsByClassName('basket-item');
+            const finalPriceSpan = document.getElementById('final-price');
+            let totalPrice = 0.0;
+            for (const element of basketItems) {
+                let quantityPrice = element.getElementsByClassName('price')[0];
+                totalPrice += parseFloat(quantityPrice.textContent);
+            }
+            finalPriceSpan.textContent = totalPrice.toFixed(2);
+        }
 
+        calculateFinalPrice();
+
+        // Add + & - button callbacks
+        let basketItems = document.getElementsByClassName('basket-item');
         for (const element of basketItems) {
             let quantityPrice = element.getElementsByClassName('price')[0];
             let input = element.getElementsByClassName('quantity')[0];
@@ -110,6 +143,7 @@
                 sendChangeBasketProductQuantityRequest(productId, quantity);
                 input.value = quantity.toString();
                 quantityPrice.textContent = (productBasePrice * quantity).toFixed(2);
+                calculateFinalPrice();
             })
 
             plusButton.addEventListener('click', function () {
@@ -122,6 +156,7 @@
                 sendChangeBasketProductQuantityRequest(productId, quantity);
                 input.value = quantity.toString();
                 quantityPrice.textContent = (productBasePrice * quantity).toFixed(2);
+                calculateFinalPrice();
             })
         }
     </script>

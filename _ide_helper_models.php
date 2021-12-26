@@ -35,32 +35,6 @@ namespace App\Models {
 
 namespace App\Models {
     /**
-     * App\Models\BasketItem
-     *
-     * @property int $id
-     * @property int $basket_id
-     * @property int $product_id
-     * @property int $quantity
-     * @property \Illuminate\Support\Carbon|null $created_at
-     * @property \Illuminate\Support\Carbon|null $updated_at
-     * @property-read \App\Models\Product $product
-     * @method static \Illuminate\Database\Eloquent\Builder|BasketItem newModelQuery()
-     * @method static \Illuminate\Database\Eloquent\Builder|BasketItem newQuery()
-     * @method static \Illuminate\Database\Eloquent\Builder|BasketItem query()
-     * @method static \Illuminate\Database\Eloquent\Builder|BasketItem whereBasketId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|BasketItem whereCreatedAt($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|BasketItem whereId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|BasketItem whereProductId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|BasketItem whereQuantity($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|BasketItem whereUpdatedAt($value)
-     */
-    class BasketItem extends \Eloquent
-    {
-    }
-}
-
-namespace App\Models {
-    /**
      * App\Models\Product
      *
      * @property int $id
