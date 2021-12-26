@@ -22,8 +22,9 @@
                         <label for="country" class="form-label">Country</label>
                         <select class="form-select" id="country" name="country">
                             <option value="" selected disabled></option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            @foreach($countries as $country)
+                                <option value="{{ $country->code }}">{{ $country->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="mb-3 col-12 col-sm-6 ps-sm-2">
