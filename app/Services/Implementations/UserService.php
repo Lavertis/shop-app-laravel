@@ -44,6 +44,30 @@ class UserService implements UserServiceInterface
         return Auth::logoutOtherDevices($request->get('password'));
     }
 
+    public function changeUsername(string $newUsername)
+    {
+        $user = Auth::user();
+        $user->username = $newUsername;
+        $user->save();
+        $user->refresh();
+    }
+
+    public function changeEmail(string $newEmail)
+    {
+        $user = Auth::user();
+        $user->email = $newEmail;
+        $user->save();
+        $user->refresh();
+    }
+
+    public function changePassword(string $newPassword)
+    {
+        $user = Auth::user();
+        $user->password = Hash::make($newPassword);
+        $user->save();
+        $user->refresh();
+    }
+
     public function deleteUser(int $id)
     {
         $this->logout();

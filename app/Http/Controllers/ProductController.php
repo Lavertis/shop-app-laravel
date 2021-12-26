@@ -51,6 +51,6 @@ class ProductController extends Controller
         if (!$product)
             return view('errors.404');
         else
-            return view('product.productDetails', ['product' => $product]);
+            return view('product.product_details', ['product' => $product]);
     }
 }

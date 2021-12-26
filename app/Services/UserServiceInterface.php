@@ -14,5 +14,11 @@ interface UserServiceInterface
 
     public function logoutOtherDevices(Request $request);
 
+    public function changeUsername(string $newUsername);
+
+    public function changeEmail(string $newEmail);
+
+    public function changePassword(string $newPassword);
+
     public function deleteUser(int $id);
 }

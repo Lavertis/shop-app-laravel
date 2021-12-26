@@ -47,8 +47,8 @@
                             </li>
                             <li>
                                 <span class="dropdown-item nav-link py-0">
-                                    <a class="nav-link @if (Route::currentRouteName() === 'account') active @endif"
-                                       href="{{ route('account') }}">Account</a>
+                                    <a class="nav-link @if (Route::currentRouteName() === 'account.details') active @endif"
+                                       href="{{ route('account.details') }}">Account</a>
                                 </span>
 
                             </li>

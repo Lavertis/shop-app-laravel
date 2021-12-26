@@ -33,7 +33,9 @@ Route::get('/logout', function () {
     return abort(404);
 });
 
-Route::get('/account', [AccountController::class, 'index'])->name('account');
+Route::get('/account', [AccountController::class, 'accountDetails'])->name('account.details');
+Route::get('/account/edit', [AccountController::class, 'accountEdit'])->name('account.edit');
+Route::post('/account/edit', [AccountController::class, 'editAccount'])->name('account.edit');
 Route::post('/account/delete', [AccountController::class, 'deleteAccount'])->name('account.delete');
 
 Route::get('/products', [ProductController::class, 'products'])->name('products');
