@@ -16,7 +16,7 @@
                     <h5 class="card-title">Filters</h5>
                     <form action="{{ route('products.filtered') }}" method="get">
 
-                        <div class="d-flex flex-column flex-sm-row col-sm-9 col-md-8 col-lg-5">
+                        <div class="d-flex flex-column flex-sm-row col-sm-9 col-md-8 col-lg-5 col-xxl-6">
 
                             <div class="mb-1 my-sm-auto col-sm-2 text-center">
                                 <span>Price</span>

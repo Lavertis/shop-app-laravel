@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -21,6 +22,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
+
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 
@@ -29,8 +33,8 @@ Route::get('/logout', function () {
     return abort(404);
 });
 
-Route::get('/register', [RegisterController::class, 'index'])->name('register');
-Route::post('/register', [RegisterController::class, 'register']);
+Route::get('/account', [AccountController::class, 'index'])->name('account');
+Route::post('/account/delete', [AccountController::class, 'deleteAccount'])->name('account.delete');
 
 Route::get('/products', [ProductController::class, 'products'])->name('products');
 Route::get('/products/filtered', [ProductController::class, 'productsFiltered'])->name('products.filtered');

@@ -40,16 +40,22 @@
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
                             aria-labelledby="userDropDownMenu">
                             <li>
-                                <a class="dropdown-item @if (Route::currentRouteName() === 'orders') active @endif"
-                                   href="#">Orders</a>
+                                <span class="dropdown-item nav-link py-0">
+                                    <a class="nav-link @if (Route::currentRouteName() === 'orders') active @endif"
+                                       href="#">Orders</a>
+                                </span>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">Profile</a>
+                                <span class="dropdown-item nav-link py-0">
+                                    <a class="nav-link @if (Route::currentRouteName() === 'account') active @endif"
+                                       href="{{ route('account') }}">Account</a>
+                                </span>
+
                             </li>
                             <li>
                                 <form action="{{ route('logout') }}" method="post">
                                     @csrf
-                                    <button class="dropdown-item" type="submit">Logout</button>
+                                    <button class="dropdown-item nav-link px-3" type="submit">Logout</button>
                                 </form>
                             </li>
                         </ul>

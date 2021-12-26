@@ -43,4 +43,10 @@ class UserService implements UserServiceInterface
     {
         return Auth::logoutOtherDevices($request->get('password'));
     }
+
+    public function deleteUser(int $id)
+    {
+        $this->logout();
+        User::destroy($id);
+    }
 }

@@ -13,4 +13,6 @@ interface UserServiceInterface
     public function logout();
 
     public function logoutOtherDevices(Request $request);
+
+    public function deleteUser(int $id);
 }
