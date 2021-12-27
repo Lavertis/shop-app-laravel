@@ -15,13 +15,16 @@ class PaymentMethodSeeder extends Seeder
     public function run()
     {
         PaymentMethod::firstOrCreate([
-            'name' => 'visa'
+            'code' => 'visa',
+            'name' => 'Visa'
         ]);
         PaymentMethod::firstOrCreate([
-            'name' => 'mastercard'
+            'code' => 'mastercard',
+            'name' => 'MasterCard'
         ]);
         PaymentMethod::firstOrCreate([
-            'name' => 'transfer'
+            'code' => 'transfer',
+            'name' => 'Bank transfer'
         ]);
     }
 }

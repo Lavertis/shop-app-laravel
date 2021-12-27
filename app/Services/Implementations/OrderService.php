@@ -39,12 +39,12 @@ class OrderService implements OrderServiceInterface
 
     public function createNewOrder(Request $request): void
     {
-        $paymentMethod = $this->paymentMethodService->getPaymentMethodByName($request->payment);
+        $paymentMethod = $this->paymentMethodService->getPaymentMethodByCode($request->payment);
         $fastDelivery = $request->fast_delivery === 'on';
 
         $order = Auth::user()->orders()->create([
-            'client_name' => $request->name,
-            'client_surname' => $request->surname,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
             'payment_method_id' => $paymentMethod->id,
             'fast_delivery' => $fastDelivery,
             'order_date' => Carbon::now('Europe/Warsaw')

@@ -12,8 +12,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class PaymentMethodService implements PaymentMethodServiceInterface
 {
-    public function getPaymentMethodByName(string $name): Model|PaymentMethod|null
+    public function getPaymentMethodByCode(string $name): Model|PaymentMethod|null
     {
-        return PaymentMethod::whereName($name)->first();
+        return PaymentMethod::whereCode($name)->first();
     }
 }

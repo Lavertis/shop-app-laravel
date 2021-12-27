@@ -8,12 +8,12 @@
                 @csrf
                 <div class="input-group justify-content-between">
                     <div class="mb-3 col-12 col-sm-6 pe-sm-2">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="name">
+                        <label for="first_name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="first_name" name="first_name">
                     </div>
                     <div class="mb-3 col-12 col-sm-6 ps-sm-2">
-                        <label for="surname" class="form-label">Surname</label>
-                        <input type="text" class="form-control" id="surname" name="surname">
+                        <label for="last_name" class="form-label">Surname</label>
+                        <input type="text" class="form-control" id="last_name" name="last_name">
                     </div>
                 </div>
 
