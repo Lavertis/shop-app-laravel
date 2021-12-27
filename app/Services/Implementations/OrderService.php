@@ -69,4 +69,9 @@ class OrderService implements OrderServiceInterface
     {
         return Auth::user()->orders()->orderBy('order_date', 'DESC')->get();
     }
+
+    public function deleteOrder(int $orderId)
+    {
+        return Auth::user()->orders()->find($orderId)->delete();
+    }
 }

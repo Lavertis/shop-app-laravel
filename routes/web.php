@@ -52,3 +52,4 @@ Route::post('/basket/delete', [BasketController::class, 'delete'])->name('basket
 Route::get('/checkout', [OrderController::class, 'checkout'])->name('order.checkout');
 Route::post('/place-order', [OrderController::class, 'placeOrder'])->name('order.place');
 Route::get('/order-history', [OrderController::class, 'history'])->name('order.history');
+Route::post('/order/delete', [OrderController::class, 'deleteOrder'])->name('order.delete');

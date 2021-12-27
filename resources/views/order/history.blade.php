@@ -35,21 +35,38 @@
                     <div id="collapse{{ $loop->index }}" class="accordion-collapse collapse"
                          aria-labelledby="heading{{ $loop->index }}" data-bs-parent="#order-accordion">
                         <div class="accordion-body">
-                            <p>First name: {{ $order->first_name }}</p>
-                            <p>Last name: {{ $order->last_name }}</p>
-                            <p>Payment method: {{ $order->paymentMethod->name }}</p>
-                            <p>
-                                <span>Fast delivery:&nbsp;&nbsp;</span>
-                                <i class="fa @if($order->fast_delivery) fa-check @else fa-times @endif"></i>
-                            </p>
-                            <div>
-                                <span>Address:</span>
-                                <ul>
-                                    <li>Country: {{ $order->address->country->name }}</li>
-                                    <li>City: {{ $order->address->city }}</li>
-                                    <li>Street: {{ $order->address->street }}</li>
-                                </ul>
+
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <p>First name: {{ $order->first_name }}</p>
+                                    <p>Last name: {{ $order->last_name }}</p>
+                                    <p>Payment method: {{ $order->paymentMethod->name }}</p>
+                                    <p>
+                                        <span>Fast delivery:&nbsp;&nbsp;</span>
+                                        <i class="fa @if($order->fast_delivery) fa-check @else fa-times @endif"></i>
+                                    </p>
+                                    <div>
+                                        <span>Address:</span>
+                                        <ul>
+                                            <li>Country: {{ $order->address->country->name }}</li>
+                                            <li>City: {{ $order->address->city }}</li>
+                                            <li>Street: {{ $order->address->street }}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div>
+                                    <form action="{{ route('order.delete') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="order_id" value="{{ $order->id }}">
+                                        <div class="d-grid">
+                                            <button type="submit" class="btn btn-danger">
+                                                <i class="fa fa-trash text-white"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
+
                             <div>
                                 <table class="table table-sm">
                                     <thead>
@@ -75,6 +92,7 @@
                                     @endforeach
                                 </table>
                             </div>
+
                         </div>
                     </div>
                 </div>
