@@ -4,7 +4,7 @@
     <div class="container-fluid mb-5">
         <div class="col-11 col-xl-9 col-xxl-7 mx-auto">
 
-            <div class="my-5">
+            <div class="my-4">
                 <div class="text-white p-5 shadow-sm rounded banner-gradient">
                     @if($products->isNotEmpty())
                         <h5 class="display-6">

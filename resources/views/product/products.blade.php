@@ -4,7 +4,7 @@
     <div class="container-fluid mb-5">
         <div class="col-11 col-xl-9 col-xxl-7 mx-auto">
 
-            <div class="mt-5 mb-4">
+            <div class="mt-4 mb-4">
                 <div class="text-white p-5 shadow-sm rounded banner-gradient">
                     <h5 class="display-6">Check out our offer</h5>
                     <p class="lead">Thousands of products with a guarantee of the highest quality</p>
