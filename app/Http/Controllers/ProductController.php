@@ -32,15 +32,14 @@ class ProductController extends Controller
     {
         $min = $request->get('min-price');
         $max = $request->get('max-price');
+        $sort = $request->get('sort');
+        $products = $this->productService->filterProducts($request);
 
-        if ($min == null && $max == null)
-            return redirect('/products');
-
-        $products = $this->productService->getProductsWithinPriceRange($min, $max);
         return view('product.products', [
             'products' => $products,
             'filters' => [
-                'price' => ['min' => $min, 'max' => $max]
+                'price' => ['min' => $min, 'max' => $max],
+                'sort' => $sort
             ]
         ]);
     }

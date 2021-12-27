@@ -15,41 +15,62 @@
                 <div class="card-body">
                     <h5 class="card-title">Filters</h5>
                     <form action="{{ route('products.filtered') }}" method="get">
+                        <div class="d-flex flex-column flex-md-row mx-auto mx-sm-3 mb-3 justify-content-between">
 
-                        <div class="d-flex flex-column flex-sm-row col-sm-9 col-md-8 col-lg-5 col-xxl-6">
-
-                            <div class="mb-1 my-sm-auto col-sm-2 text-center">
-                                <span>Price</span>
+                            <div class="d-flex flex-column col-8 col-md-6 mx-auto mt-2 mb-3 mb-md-0">
+                                <div class="my-auto mb-2 mb-md-0">
+                                    <span>Price</span>
+                                </div>
+                                <div class="d-flex flex-column flex-sm-row">
+                                    <input type="number" min="0" class="form-control mb-2 mb-sm-0"
+                                           id="min-price" name="min-price"
+                                           @isset($filters['price']) value="{{ $filters['price']['min'] }}" @endisset>
+                                    <span class="my-auto d-none d-sm-block mx-2">—</span>
+                                    <input type="number" max="100000" class="form-control"
+                                           id="max-price" name="max-price"
+                                           @isset($filters['price']) value="{{ $filters['price']['max'] }}" @endisset>
+                                </div>
                             </div>
 
-                            <div class="mb-2 my-sm-auto mx-auto col-8 col-sm-4">
-                                <input type="number" size="5" min="0" class="form-control"
-                                       id="min-price" name="min-price"
-                                       @isset($filters['price']) value="{{ $filters['price']['min'] }}" @endisset>
-                            </div>
-
-                            <span class="my-auto d-none d-sm-block">—</span>
-
-                            <div class="my-sm-auto mx-auto col-8 col-sm-4">
-                                <input type="number" size="5" max="100000" class="form-control"
-                                       id="max-price" name="max-price"
-                                       @isset($filters['price']) value="{{ $filters['price']['max'] }}" @endisset>
+                            <div class="d-flex flex-column col-8 col-md-5 mx-auto mb-3 mb-md-0">
+                                <div class="my-auto mb-2 mb-md-0">
+                                    <span>Sort</span>
+                                </div>
+                                <div class="">
+                                    <select class="form-select" name="sort" id="sort">
+                                        @if(isset($filters))
+                                            @if($filters['sort'] == 'asc')
+                                                <option selected></option>
+                                                <option value="asc" selected>Ascending</option>
+                                                <option value="desc">Descending</option>
+                                            @elseif($filters['sort'] == 'desc')
+                                                <option selected></option>
+                                                <option value="asc">Ascending</option>
+                                                <option value="desc" selected>Descending</option>
+                                            @else
+                                                <option selected></option>
+                                                <option value="asc">Ascending</option>
+                                                <option value="desc">Descending</option>
+                                            @endif
+                                        @else
+                                            <option selected></option>
+                                            <option value="asc">Ascending</option>
+                                            <option value="desc">Descending</option>
+                                        @endif
+                                    </select>
+                                </div>
                             </div>
 
                         </div>
 
                         <div class="mt-2 d-flex flex-column flex-sm-row col-12 justify-content-end">
-
                             <div class="mb-2 mx-auto mx-sm-1 my-sm-auto col-8 col-sm-auto">
                                 <button class="btn btn-primary col-12">Filter</button>
                             </div>
-
                             <div class="mb-2 mx-auto mx-sm-1 my-sm-auto col-8 col-sm-auto">
                                 <a href="{{ route('products') }}" class="btn btn-secondary col-12">Reset</a>
                             </div>
-
                         </div>
-
                     </form>
                 </div>
             </div>
@@ -98,6 +119,7 @@
 
 @section('js')
     <script>
+
         // Price filter input callbacks
         let minPriceInput = document.getElementById('min-price');
         let maxPriceInput = document.getElementById('max-price');
