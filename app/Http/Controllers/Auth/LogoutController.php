@@ -21,7 +21,7 @@ class LogoutController extends Controller
         $this->middleware(['auth']);
     }
 
-    public function logout(): Factory|View|Application
+    public function postLogout(): Factory|View|Application
     {
         $this->userService->logout();
         return view('home');

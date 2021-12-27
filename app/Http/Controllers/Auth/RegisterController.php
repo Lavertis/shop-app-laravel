@@ -23,12 +23,12 @@ class RegisterController extends Controller
         $this->middleware(['guest']);
     }
 
-    public function index(): Factory|View|Application
+    public function getRegister(): Factory|View|Application
     {
         return view('auth.register');
     }
 
-    public function register(RegisterRequest $request): RedirectResponse
+    public function postRegister(RegisterRequest $request): RedirectResponse
     {
         $this->userService->saveUser($request);
         $this->userService->login($request);

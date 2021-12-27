@@ -23,21 +23,21 @@ class AccountController extends Controller
         $this->middleware('auth');
     }
 
-    public function accountDetails(): Factory|View|Application
+    public function getAccountDetails(): Factory|View|Application
     {
         $username = Auth::user()->username;
         $email = Auth::user()->email;
         return view('account.details', ['username' => $username, 'email' => $email]);
     }
 
-    public function accountEdit(): Factory|View|Application
+    public function getAccountEdit(): Factory|View|Application
     {
         $username = Auth::user()->username;
         $email = Auth::user()->email;
         return view('account.edit', ['username' => $username, 'email' => $email]);
     }
 
-    public function editAccount(UpdateAccountDetailsRequest $request): RedirectResponse
+    public function postAccountEdit(UpdateAccountDetailsRequest $request): RedirectResponse
     {
         $username = $request->get('username');
         $email = $request->get('email');
@@ -53,7 +53,7 @@ class AccountController extends Controller
         return redirect()->route('account.details');
     }
 
-    public function deleteAccount(): Factory|View|Application
+    public function postAccountDelete(): Factory|View|Application
     {
         $id = Auth::user()->id;
         $this->userService->deleteUser($id);

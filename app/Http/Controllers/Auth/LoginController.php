@@ -23,12 +23,12 @@ class LoginController extends Controller
         $this->middleware(['guest']);
     }
 
-    public function index(): Factory|View|Application
+    public function getLogin(): Factory|View|Application
     {
         return view('auth.login');
     }
 
-    public function login(LoginRequest $request): RedirectResponse
+    public function postLogin(LoginRequest $request): RedirectResponse
     {
         $loggedInSuccessfully = $this->userService->login($request);
         if ($loggedInSuccessfully) {

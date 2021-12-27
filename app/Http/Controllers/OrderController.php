@@ -28,7 +28,7 @@ class OrderController extends Controller
         $this->middleware('auth');
     }
 
-    public function checkout(): View|Factory|Application|RedirectResponse
+    public function getCheckout(): View|Factory|Application|RedirectResponse
     {
         $productsInBasketCount = $this->basketService->getProductsInBasket()->count();
         if ($productsInBasketCount === 0)
@@ -38,21 +38,21 @@ class OrderController extends Controller
         return view('order.checkout', ['countries' => $countries]);
     }
 
-    public function placeOrder(Request $request): Redirector|Application|RedirectResponse
+    public function postCheckout(Request $request): Redirector|Application|RedirectResponse
     {
         $this->orderService->createNewOrder($request);
-        return redirect('/order-history');
+        return redirect('/orders/history');
     }
 
-    public function history(): Factory|View|Application
+    public function getHistory(): Factory|View|Application
     {
         $orders = $this->orderService->getAllOrders();
         return view('order.history', ['orders' => $orders]);
     }
 
-    public function deleteOrder(Request $request): Redirector|Application|RedirectResponse
+    public function postDelete(Request $request): Redirector|Application|RedirectResponse
     {
         $this->orderService->deleteOrder($request->order_id);
-        return redirect('/order-history');
+        return redirect('/orders/history');
     }
 }

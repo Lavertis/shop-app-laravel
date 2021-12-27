@@ -21,35 +21,35 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'getHome'])->name('home');
 
-Route::get('/register', [RegisterController::class, 'index'])->name('register');
-Route::post('/register', [RegisterController::class, 'register']);
+Route::get('/register', [RegisterController::class, 'getRegister'])->name('register');
+Route::post('/register', [RegisterController::class, 'postRegister']);
 
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
+Route::get('/login', [LoginController::class, 'getLogin'])->name('login');
+Route::post('/login', [LoginController::class, 'postLogin']);
 
-Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
+Route::post('/logout', [LogoutController::class, 'postLogout'])->name('logout');
 Route::get('/logout', function () {
     return abort(404);
 });
 
-Route::get('/account', [AccountController::class, 'accountDetails'])->name('account.details');
-Route::get('/account/edit', [AccountController::class, 'accountEdit'])->name('account.edit');
-Route::post('/account/edit', [AccountController::class, 'editAccount'])->name('account.edit');
-Route::post('/account/delete', [AccountController::class, 'deleteAccount'])->name('account.delete');
+Route::get('/account/details', [AccountController::class, 'getAccountDetails'])->name('account.details');
+Route::get('/account/edit', [AccountController::class, 'getAccountEdit'])->name('account.edit');
+Route::post('/account/edit', [AccountController::class, 'postAccountEdit'])->name('account.edit');
+Route::post('/account/delete', [AccountController::class, 'postAccountDelete'])->name('account.delete');
 
 
-Route::get('/products', [ProductController::class, 'products'])->name('products');
-Route::get('/products/filtered', [ProductController::class, 'productsFiltered'])->name('products.filtered');
-Route::get('/product/{id}', [ProductController::class, 'productDetails'])->name('product.details');
+Route::get('/products', [ProductController::class, 'getProducts'])->name('products');
+Route::get('/products/filtered', [ProductController::class, 'getProductsFiltered'])->name('products.filtered');
+Route::get('/products/{id}', [ProductController::class, 'getProductDetails'])->name('product.details');
 
-Route::get('/basket', [BasketController::class, 'index'])->name('basket');
-Route::post('/basket/add', [BasketController::class, 'add'])->name('basket.add');
-Route::patch('/basket/update', [BasketController::class, 'update'])->name('basket.update');
-Route::post('/basket/delete', [BasketController::class, 'delete'])->name('basket.delete');
+Route::get('/basket', [BasketController::class, 'getBasket'])->name('basket');
+Route::post('/basket/add', [BasketController::class, 'postAddItem'])->name('basket.add');
+Route::patch('/basket/update', [BasketController::class, 'patchUpdateItem'])->name('basket.update');
+Route::post('/basket/delete', [BasketController::class, 'postDeleteItem'])->name('basket.delete');
 
-Route::get('/checkout', [OrderController::class, 'checkout'])->name('order.checkout');
-Route::post('/place-order', [OrderController::class, 'placeOrder'])->name('order.place');
-Route::get('/order-history', [OrderController::class, 'history'])->name('order.history');
-Route::post('/order/delete', [OrderController::class, 'deleteOrder'])->name('order.delete');
+Route::get('/checkout', [OrderController::class, 'getCheckout'])->name('order.checkout');
+Route::post('/checkout', [OrderController::class, 'postCheckout'])->name('order.place');
+Route::get('/orders/history', [OrderController::class, 'getHistory'])->name('order.history');
+Route::post('/orders/delete', [OrderController::class, 'postDelete'])->name('order.delete');

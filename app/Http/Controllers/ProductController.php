@@ -22,13 +22,13 @@ class ProductController extends Controller
         $this->middleware('auth');
     }
 
-    public function products(): Factory|View|Application
+    public function getProducts(): Factory|View|Application
     {
         $products = $this->productService->getAllProducts();
         return view('product.products', ['products' => $products]);
     }
 
-    public function productsFiltered(FilterProductsRequest $request): View|Factory|Application|RedirectResponse
+    public function getProductsFiltered(FilterProductsRequest $request): View|Factory|Application|RedirectResponse
     {
         $min = $request->get('min-price');
         $max = $request->get('max-price');
@@ -45,12 +45,12 @@ class ProductController extends Controller
         ]);
     }
 
-    public function productDetails(string $id): Factory|View|Application
+    public function getProductDetails(string $id): Factory|View|Application
     {
         $product = $this->productService->getProductById($id);
         if (!$product)
             return view('errors.404');
         else
-            return view('product.product_details', ['product' => $product]);
+            return view('product.details', ['product' => $product]);
     }
 }

@@ -23,23 +23,23 @@ class BasketController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(): Factory|View|Application
+    public function getBasket(): Factory|View|Application
     {
         $products = $this->basketService->getProductsInBasket();
         return view('basket.basket', ['products' => $products]);
     }
 
-    public function add(AddOrUpdateBasketItemRequest $request)
+    public function postAddItem(AddOrUpdateBasketItemRequest $request)
     {
         return $this->basketService->addToBasket($request);
     }
 
-    public function update(AddOrUpdateBasketItemRequest $request)
+    public function patchUpdateItem(AddOrUpdateBasketItemRequest $request)
     {
         return $this->basketService->changeProductQuantity($request);
     }
 
-    public function delete(Request $request): RedirectResponse
+    public function postDeleteItem(Request $request): RedirectResponse
     {
         $this->basketService->removeFromBasket($request);
         return back();

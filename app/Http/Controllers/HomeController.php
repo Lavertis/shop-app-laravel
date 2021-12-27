@@ -8,7 +8,7 @@ use Illuminate\Contracts\View\View;
 
 class HomeController extends Controller
 {
-    public function index(): Factory|View|Application
+    public function getHome(): Factory|View|Application
     {
         return view('home');
     }
