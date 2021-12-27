@@ -17412,23 +17412,25 @@ readers do not read off random characters that represent icons */
 }
 
 body {
-  /*background-color: #ffffff;*/
-  /*background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);*/
   background-color: whitesmoke;
   background-image: linear-gradient(315deg, whitesmoke 0%, #eaf2fd 74%);
 }
 
 nav, footer {
-  background-color: #457b9d !important;
+  background-color: #457b9d;
 }
 
 .navbar-nav > li > .dropdown-menu {
   background-color: #2e5f80;
 }
 
-.navbar-nav > li > .dropdown-menu > li > a > .dropdown-item:active,
+.navbar-nav > li > .dropdown-menu > li > .dropdown-item:active,
 .navbar-nav > li > .dropdown-menu > li > form > .dropdown-item:active {
   background-color: #457b9d;
+}
+
+.navbar-nav > li > .dropdown-menu > li > .dropdown-item.active {
+  background-color: #2e5f80;
 }
 
 .banner-gradient {

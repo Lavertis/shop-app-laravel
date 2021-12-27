@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href={{ asset('css/app.css') }}>
+    @yield('styles')
     <title>{{ $title }}</title>
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -40,16 +41,12 @@
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
                             aria-labelledby="userDropDownMenu">
                             <li>
-                                <a class="@if (Route::currentRouteName() === 'order.history') active @endif
-                                    text-decoration-none" href="{{ route('order.history') }}">
-                                    <button class="dropdown-item nav-link px-3">Orders</button>
-                                </a>
+                                <a href="{{ route('order.history') }}" class="dropdown-item nav-link px-3
+                                @if (Route::currentRouteName() === 'order.history') active @endif">Orders</a>
                             </li>
                             <li>
-                                <a class="@if (Route::currentRouteName() === 'account.details') active @endif
-                                    text-decoration-none" href="{{ route('account.details') }}">
-                                    <button class="dropdown-item nav-link px-3">Account</button>
-                                </a>
+                                <a href="{{ route('account.details') }}" class="dropdown-item nav-link px-3
+                                @if (Route::currentRouteName() === 'account.details') active @endif">Account</a>
                             </li>
                             <li>
                                 <form action="{{ route('logout') }}" method="post">

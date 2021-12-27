@@ -1,6 +1,8 @@
 @extends('layouts.app', ['title' => 'Order history'])
 
+
 @section('content')
+
     <div class="container mt-4 mb-5 col-md-10 col-xl-8 col-xxl-6">
 
         <div class="mb-4">
@@ -100,4 +102,12 @@
         </div>
 
     </div>
+@endsection
+
+@section('styles')
+    <style>
+        p {
+            margin-bottom: 6px;
+        }
+    </style>
 @endsection
