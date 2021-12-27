@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Order\OrderCheckoutRequest;
+use App\Http\Requests\Order\OrderDeleteRequest;
 use App\Services\Interfaces\BasketServiceInterface;
 use App\Services\Interfaces\CountryServiceInterface;
 use App\Services\Interfaces\OrderServiceInterface;
@@ -10,7 +11,6 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 
 class OrderController extends Controller
@@ -51,7 +51,7 @@ class OrderController extends Controller
         return view('order.history', ['orders' => $orders]);
     }
 
-    public function postDelete(Request $request): Redirector|Application|RedirectResponse
+    public function postDelete(OrderDeleteRequest $request): Redirector|Application|RedirectResponse
     {
         $this->orderService->deleteOrder($request->order_id);
         return redirect('/orders/history');
