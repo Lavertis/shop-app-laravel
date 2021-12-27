@@ -40,17 +40,16 @@
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
                             aria-labelledby="userDropDownMenu">
                             <li>
-                                <span class="dropdown-item nav-link py-0">
-                                    <a class="nav-link @if (Route::currentRouteName() === 'order.history') active @endif"
-                                       href="{{ route('order.history') }}">Orders</a>
-                                </span>
+                                <a class="@if (Route::currentRouteName() === 'order.history') active @endif
+                                    text-decoration-none" href="{{ route('order.history') }}">
+                                    <button class="dropdown-item nav-link px-3">Orders</button>
+                                </a>
                             </li>
                             <li>
-                                <span class="dropdown-item nav-link py-0">
-                                    <a class="nav-link @if (Route::currentRouteName() === 'account.details') active @endif"
-                                       href="{{ route('account.details') }}">Account</a>
-                                </span>
-
+                                <a class="@if (Route::currentRouteName() === 'account.details') active @endif
+                                    text-decoration-none" href="{{ route('account.details') }}">
+                                    <button class="dropdown-item nav-link px-3">Account</button>
+                                </a>
                             </li>
                             <li>
                                 <form action="{{ route('logout') }}" method="post">
