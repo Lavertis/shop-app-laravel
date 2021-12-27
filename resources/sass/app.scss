@@ -59,7 +59,9 @@ nav, footer {
     text-decoration: underline !important;
 }
 
-.no-focus-border:focus, .no-active-border:active {
+.no-clicked-border:focus,
+.no-clicked-border:active,
+{
     outline: none;
     box-shadow: none;
 }

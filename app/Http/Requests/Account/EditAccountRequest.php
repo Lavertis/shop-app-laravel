@@ -36,7 +36,8 @@ class EditAccountRequest extends FormRequest
                 'required_without_all:username,password',
                 'nullable',
                 'unique:users',
-                'email'
+                'email',
+                'max:255'
             ],
             'password' => [
                 'required_without_all:username,email',

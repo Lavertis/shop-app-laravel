@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Order\OrderCheckoutRequest;
 use App\Services\Interfaces\BasketServiceInterface;
 use App\Services\Interfaces\CountryServiceInterface;
 use App\Services\Interfaces\OrderServiceInterface;
@@ -19,8 +20,8 @@ class OrderController extends Controller
     private OrderServiceInterface $orderService;
 
     public function __construct(CountryServiceInterface $countryService,
-                                BasketServiceInterface  $basketService,
-                                OrderServiceInterface   $orderService)
+                                BasketServiceInterface $basketService,
+                                OrderServiceInterface  $orderService)
     {
         $this->countryService = $countryService;
         $this->basketService = $basketService;
@@ -38,7 +39,7 @@ class OrderController extends Controller
         return view('order.checkout', ['countries' => $countries]);
     }
 
-    public function postCheckout(Request $request): Redirector|Application|RedirectResponse
+    public function postCheckout(OrderCheckoutRequest $request): Redirector|Application|RedirectResponse
     {
         $this->orderService->createNewOrder($request);
         return redirect('/orders/history');

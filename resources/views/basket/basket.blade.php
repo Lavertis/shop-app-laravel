@@ -54,13 +54,13 @@
 
                             <div class="col-auto my-lg-auto d-flex">
                                 <div class="input-group">
-                                    <button class="btn btn-outline-dark fa fa-minus no-focus-border"
+                                    <button class="btn btn-outline-dark fa fa-minus no-clicked-border"
                                             @if($product->pivot->quantity === 1) disabled @endif>
                                     </button>
                                     <input type="text" size="3" readonly
                                            value="{{ $product->pivot->quantity }}" data-product-id="{{ $product->id }}"
                                            class="form-control text-center bg-white quantity pointer-events-none">
-                                    <button class="btn btn-outline-dark fa fa-plus no-focus-border"
+                                    <button class="btn btn-outline-dark fa fa-plus no-clicked-border"
                                             @if($product->pivot->quantity === 99) disabled @endif>
                                     </button>
                                 </div>
