@@ -54,9 +54,10 @@ class OrderService implements OrderServiceInterface
         $this->addressService->createNewAddress($order->id, $countryId, $request->city, $request->street);
 
         $basketItems = $this->basketService->getProductsInBasket();
-
         foreach ($basketItems as $basketItem) {
             $order->products()->attach($basketItem->id, ['quantity' => $basketItem->pivot->quantity]);
         }
+
+        $this->basketService->destroyBasket();
     }
 }

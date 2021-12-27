@@ -13,4 +13,6 @@ interface BasketServiceInterface
     public function changeProductQuantity(Request $request);
 
     public function removeFromBasket(Request $request);
+
+    public function destroyBasket();
 }

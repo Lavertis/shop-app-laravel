@@ -6,7 +6,7 @@
 
             <div class="my-5">
                 <div class="text-white p-5 shadow-sm rounded banner-gradient">
-                    @if($products->count())
+                    @if($products->isNotEmpty())
                         <h5 class="display-6">
                             You have {{ $products->count() }}
                             @if($products->count() > 1)

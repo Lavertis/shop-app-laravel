@@ -27,10 +27,12 @@ class BasketService implements BasketServiceInterface
         }
     }
 
-    public function getProductsInBasket(): Collection|array
+    public function getProductsInBasket(): Collection|array|null
     {
-        $this->makeSureBasketExists();
-        return Auth::user()->basket->products;
+        if (Auth::user()->basket == null)
+            return Collection::empty();
+        else
+            return Auth::user()->basket->products;
     }
 
     public function addToBasket(Request $request): void
@@ -67,7 +69,16 @@ class BasketService implements BasketServiceInterface
 
     public function removeFromBasket(Request $request): int
     {
-        $productId = $request->get('product_id');
-        return Auth::user()->basket->products()->detach($productId);
+        if ($this->getProductsInBasket()->count() > 1) {
+            $productId = $request->get('product_id');
+            return Auth::user()->basket->products()->detach($productId);
+        }
+        else
+            return $this->destroyBasket();
+    }
+
+    public function destroyBasket(): ?bool
+    {
+        return Auth::user()->basket->delete();
     }
 }
