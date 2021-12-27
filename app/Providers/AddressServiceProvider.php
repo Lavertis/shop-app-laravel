@@ -2,11 +2,11 @@
 
 namespace App\Providers;
 
-use App\Services\Implementations\BasketService;
-use App\Services\Interfaces\BasketServiceInterface;
+use App\Services\Implementations\AddressService;
+use App\Services\Interfaces\AddressServiceInterface;
 use Illuminate\Support\ServiceProvider;
 
-class BasketServiceProvider extends ServiceProvider
+class AddressServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -15,7 +15,7 @@ class BasketServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(BasketServiceInterface::class, BasketService::class);
+        $this->app->singleton(AddressServiceInterface::class, AddressService::class);
     }
 
     /**

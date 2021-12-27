@@ -2,8 +2,9 @@
 
 namespace App\Services\Implementations;
 
-use App\Services\BasketServiceInterface;
+use App\Services\Interfaces\BasketServiceInterface;
 use Auth;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 /**
@@ -17,7 +18,7 @@ class BasketService implements BasketServiceInterface
         return $quantity >= 1 && $quantity <= 99;
     }
 
-    private function makeSureBasketExists()
+    private function makeSureBasketExists(): void
     {
         $basket = Auth::user()->basket;
         if ($basket == null) {
@@ -26,13 +27,13 @@ class BasketService implements BasketServiceInterface
         }
     }
 
-    public function getProductsInBasket()
+    public function getProductsInBasket(): Collection|array
     {
         $this->makeSureBasketExists();
         return Auth::user()->basket->products;
     }
 
-    public function addToBasket(Request $request)
+    public function addToBasket(Request $request): void
     {
         $this->makeSureBasketExists();
 

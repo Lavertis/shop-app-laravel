@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Services\CountryServiceInterface;
 use App\Services\Implementations\CountryService;
+use App\Services\Interfaces\CountryServiceInterface;
 use Illuminate\Support\ServiceProvider;
 
 class CountryServiceProvider extends ServiceProvider

@@ -21,7 +21,7 @@ class CreateOrdersTable extends Migration
             $table->foreignId('address_id')->constrained()->cascadeOnDelete();
             $table->foreignId('payment_method_id')->constrained()->cascadeOnDelete();
             $table->boolean('fast_delivery');
-            $table->dateTimeTz('order_date');
+            $table->dateTime('order_date');
             $table->timestamps();
         });
     }

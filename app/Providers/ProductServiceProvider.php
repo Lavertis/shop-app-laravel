@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Services\Implementations\ProductService;
-use App\Services\ProductServiceInterface;
+use App\Services\Interfaces\ProductServiceInterface;
 use Illuminate\Support\ServiceProvider;
 
 class ProductServiceProvider extends ServiceProvider

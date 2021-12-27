@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AddOrUpdateBasketItemRequest;
-use App\Services\BasketServiceInterface;
+use App\Services\Interfaces\BasketServiceInterface;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;

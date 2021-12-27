@@ -182,6 +182,9 @@ return [
         App\Providers\ProductServiceProvider::class,
         App\Providers\BasketServiceProvider::class,
         App\Providers\CountryServiceProvider::class,
+        App\Providers\OrderServiceProvider::class,
+        App\Providers\AddressServiceProvider::class,
+        App\Providers\PaymentMethodServiceProvider::class,
     ],
 
     /*

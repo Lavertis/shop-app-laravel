@@ -3,8 +3,9 @@
 namespace App\Services\Implementations;
 
 use App\Models\Product;
-use App\Services\ProductServiceInterface;
+use App\Services\Interfaces\ProductServiceInterface;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class ProductService
@@ -27,7 +28,7 @@ class ProductService implements ProductServiceInterface
             return Product::where('price', '>=', $min)->where('price', '<=', $max)->get();
     }
 
-    public function getProductById(string $id): Product|null
+    public function getProductById(string $id): Model|Product|null
     {
         return Product::find($id);
     }
