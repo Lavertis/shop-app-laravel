@@ -41,8 +41,8 @@
                             aria-labelledby="userDropDownMenu">
                             <li>
                                 <span class="dropdown-item nav-link py-0">
-                                    <a class="nav-link @if (Route::currentRouteName() === 'orders') active @endif"
-                                       href="#">Orders</a>
+                                    <a class="nav-link @if (Route::currentRouteName() === 'order.history') active @endif"
+                                       href="{{ route('order.history') }}">Orders</a>
                                 </span>
                             </li>
                             <li>

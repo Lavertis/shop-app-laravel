@@ -4,7 +4,7 @@
     <div class="container my-auto py-5">
         <div class="mx-auto bg-light rounded px-5 py-4 shadow col-10 col-sm-12 col-lg-9 col-xl-8 col-xxl-7">
             <h4 class="mt-1">Checkout</h4>
-            <form class="mt-4 mb-2">
+            <form class="mt-4 mb-2" action="{{ route('order.place') }}" method="post">
                 @csrf
                 <div class="input-group justify-content-between">
                     <div class="mb-3 col-12 col-sm-6 pe-sm-2">
@@ -41,21 +41,21 @@
                     <div class="mb-3">
                         <label for="payment" class="form-label me-2">Payment method</label>
                         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                            <input type="radio" class="btn-check" name="payment" id="visa" autocomplete="off">
+                            <input type="radio" class="btn-check" name="payment" id="visa" value="visa">
                             <label class="btn btn-outline-primary no-active-border" for="visa">Visa</label>
 
-                            <input type="radio" class="btn-check" name="payment" id="mastercard" autocomplete="off">
+                            <input type="radio" class="btn-check" name="payment" id="mastercard" value="mastercard">
                             <label class="btn btn-outline-primary" for="mastercard">MasterCard</label>
 
-                            <input type="radio" class="btn-check" name="payment" id="transfer" autocomplete="off">
+                            <input type="radio" class="btn-check" name="payment" id="transfer" value="transfer">
                             <label class="btn btn-outline-primary" for="transfer">Transfer</label>
                         </div>
                     </div>
 
                     <div class="my-1 mx-md-auto">
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="fast-delivery" name="fast-delivery">
-                            <label class="form-check-label" for="fast-delivery">Fast delivery</label>
+                            <input class="form-check-input" type="checkbox" id="fast_delivery" name="fast_delivery">
+                            <label class="form-check-label" for="fast_delivery">Fast delivery</label>
                         </div>
                     </div>
                 </div>

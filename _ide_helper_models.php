@@ -1,7 +1,6 @@
 <?php
 
 // @formatter:off
-
 /**
  * A helper file for your Eloquent Models
  * Copy the phpDocs from this file to the correct Model,
@@ -10,6 +9,33 @@
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  */
 
+
+namespace App\Models {
+    /**
+     * App\Models\Address
+     *
+     * @property int $id
+     * @property int $country_id
+     * @property string $city
+     * @property string $street
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property-read \App\Models\Country $country
+     * @property-read \App\Models\Order $order
+     * @method static \Illuminate\Database\Eloquent\Builder|Address newModelQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|Address newQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|Address query()
+     * @method static \Illuminate\Database\Eloquent\Builder|Address whereCity($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Address whereCountryId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Address whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Address whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Address whereStreet($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Address whereUpdatedAt($value)
+     */
+    class Address extends \Eloquent
+    {
+    }
+}
 
 namespace App\Models {
     /**
@@ -59,6 +85,66 @@ namespace App\Models {
 
 namespace App\Models {
     /**
+     * App\Models\Order
+     *
+     * @property int $id
+     * @property string $client_name
+     * @property string $client_surname
+     * @property int $user_id
+     * @property int $address_id
+     * @property int $payment_method_id
+     * @property int $fast_delivery
+     * @property string $order_date
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property-read \App\Models\Address $address
+     * @property-read \App\Models\PaymentMethod $paymentMethod
+     * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Product[] $products
+     * @property-read int|null $products_count
+     * @property-read \App\Models\User $user
+     * @method static \Illuminate\Database\Eloquent\Builder|Order newModelQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|Order newQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|Order query()
+     * @method static \Illuminate\Database\Eloquent\Builder|Order whereAddressId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Order whereClientName($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Order whereClientSurname($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Order whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Order whereFastDelivery($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Order whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Order whereOrderDate($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Order wherePaymentMethodId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Order whereUpdatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Order whereUserId($value)
+     */
+    class Order extends \Eloquent
+    {
+    }
+}
+
+namespace App\Models {
+    /**
+     * App\Models\PaymentMethod
+     *
+     * @property int $id
+     * @property string $name
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property-read \App\Models\Order $order
+     * @method static \Illuminate\Database\Eloquent\Builder|PaymentMethod newModelQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|PaymentMethod newQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|PaymentMethod query()
+     * @method static \Illuminate\Database\Eloquent\Builder|PaymentMethod whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|PaymentMethod whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|PaymentMethod whereName($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|PaymentMethod whereUpdatedAt($value)
+     */
+    class PaymentMethod extends \Eloquent
+    {
+    }
+}
+
+namespace App\Models {
+    /**
      * App\Models\Product
      *
      * @property int $id
@@ -69,6 +155,8 @@ namespace App\Models {
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Basket[] $baskets
      * @property-read int|null $baskets_count
+     * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $orders
+     * @property-read int|null $orders_count
      * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder|Product newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder|Product query()
@@ -99,6 +187,8 @@ namespace App\Models {
      * @property-read \App\Models\Basket|null $basket
      * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
      * @property-read int|null $notifications_count
+     * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $orders
+     * @property-read int|null $orders_count
      * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
      * @property-read int|null $tokens_count
      * @method static \Database\Factories\UserFactory factory(...$parameters)

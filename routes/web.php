@@ -39,6 +39,7 @@ Route::get('/account/edit', [AccountController::class, 'accountEdit'])->name('ac
 Route::post('/account/edit', [AccountController::class, 'editAccount'])->name('account.edit');
 Route::post('/account/delete', [AccountController::class, 'deleteAccount'])->name('account.delete');
 
+
 Route::get('/products', [ProductController::class, 'products'])->name('products');
 Route::get('/products/filtered', [ProductController::class, 'productsFiltered'])->name('products.filtered');
 Route::get('/product/{id}', [ProductController::class, 'productDetails'])->name('product.details');
@@ -49,3 +50,5 @@ Route::patch('/basket/update', [BasketController::class, 'update'])->name('baske
 Route::post('/basket/delete', [BasketController::class, 'delete'])->name('basket.delete');
 
 Route::get('/checkout', [OrderController::class, 'checkout'])->name('order.checkout');
+Route::post('/place-order', [OrderController::class, 'placeOrder'])->name('order.place');
+Route::get('/order-history', [OrderController::class, 'history'])->name('order.history');

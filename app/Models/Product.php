@@ -20,10 +20,16 @@ class Product extends Model
         'name',
         'description',
         'price',
+        'order_date'
     ];
 
     public function baskets(): BelongsToMany
     {
         return $this->belongsToMany(Basket::class);
+    }
+
+    public function orders(): BelongsToMany
+    {
+        return $this->belongsToMany(Order::class);
     }
 }
