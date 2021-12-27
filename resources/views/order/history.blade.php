@@ -44,7 +44,7 @@
                                     <p>Last name: {{ $order->last_name }}</p>
                                     <p>Payment method: {{ $order->paymentMethod->name }}</p>
                                     <p>
-                                        <span>Fast delivery:&nbsp;&nbsp;</span>
+                                        <span>Fast delivery:&nbsp;</span>
                                         <i class="fa @if($order->fast_delivery) fa-check @else fa-times @endif"></i>
                                     </p>
                                     <div>
@@ -78,6 +78,7 @@
                                         <th>Price</th>
                                     </tr>
                                     </thead>
+                                    <tbody>
                                     @foreach($order->products as $product)
                                         <tr>
                                             <td>{{ $product->pivot->quantity }}</td>
@@ -92,6 +93,14 @@
                                             </td>
                                         </tr>
                                     @endforeach
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="fw-bold">
+                                            ${{ number_format($order->getTotalPrice(), 2) }}
+                                        </td>
+                                    </tr>
+                                    </tbody>
                                 </table>
                             </div>
 
@@ -108,6 +117,11 @@
     <style>
         p {
             margin-bottom: 6px;
+        }
+
+        .fa-check, .fa-times {
+            position: relative;
+            top: 1px;
         }
     </style>
 @endsection

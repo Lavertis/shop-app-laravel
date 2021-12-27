@@ -20,6 +20,14 @@ class Order extends Model
         'order_date'
     ];
 
+    public function getTotalPrice(): float
+    {
+        $totalPrice = 0.0;
+        foreach ($this->products as $product)
+            $totalPrice += $product->price * $product->pivot->quantity;
+        return $totalPrice;
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
