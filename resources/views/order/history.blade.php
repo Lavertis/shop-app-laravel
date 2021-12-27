@@ -62,7 +62,12 @@
                                     @foreach($order->products as $product)
                                         <tr>
                                             <td>{{ $product->pivot->quantity }}</td>
-                                            <td>{{ $product->name }}</td>
+                                            <td>
+                                                <a href="{{ route('product.details', $product->id) }}"
+                                                   class="text-decoration-none text-black underline-on-hover">
+                                                    {{ $product->name }}
+                                                </a>
+                                            </td>
                                             <td>
                                                 ${{ number_format($product->pivot->quantity * $product->price, 2) }}
                                             </td>
