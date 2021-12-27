@@ -7,6 +7,7 @@ use App\Services\Interfaces\BasketServiceInterface;
 use App\Services\Interfaces\CountryServiceInterface;
 use App\Services\Interfaces\OrderServiceInterface;
 use App\Services\Interfaces\PaymentMethodServiceInterface;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -24,6 +25,9 @@ class OrderService implements OrderServiceInterface
 
     /**
      * @param AddressServiceInterface $addressService
+     * @param CountryServiceInterface $countryService
+     * @param PaymentMethodServiceInterface $paymentMethodService
+     * @param BasketServiceInterface $basketService
      */
     public function __construct(AddressServiceInterface       $addressService,
                                 CountryServiceInterface       $countryService,
@@ -59,5 +63,10 @@ class OrderService implements OrderServiceInterface
         }
 
         $this->basketService->destroyBasket();
+    }
+
+    public function getAllOrders(): Collection
+    {
+        return Auth::user()->orders()->orderBy('order_date', 'DESC')->get();
     }
 }

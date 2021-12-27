@@ -11,7 +11,6 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
-use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -47,7 +46,8 @@ class OrderController extends Controller
 
     public function history(): Factory|View|Application
     {
-        $orders = Auth::user()->orders;
+
+        $orders = $this->orderService->getAllOrders();
         return view('order.history', ['orders' => $orders]);
     }
 }
