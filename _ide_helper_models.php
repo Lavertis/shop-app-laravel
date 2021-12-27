@@ -184,7 +184,7 @@ namespace App\Models {
      * @property string|null $remember_token
      * @property \Illuminate\Support\Carbon|null $created_at
      * @property \Illuminate\Support\Carbon|null $updated_at
-     * @property-read \App\Models\Basket|null $basket
+     * @property-read \App\Models\Basket|null $Basket
      * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
      * @property-read int|null $notifications_count
      * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $orders

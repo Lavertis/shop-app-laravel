@@ -23,7 +23,7 @@ class BasketService implements BasketServiceInterface
         $basket = Auth::user()->basket;
         if ($basket == null) {
             Auth::user()->basket()->create()->save();
-            Auth::user()->refresh(); // without refresh view still gets null instead of newly created basket
+            Auth::user()->refresh(); // without refresh view still gets null instead of newly created Basket
         }
     }
 

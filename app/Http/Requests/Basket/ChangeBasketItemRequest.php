@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Basket;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FilterProductsRequest extends FormRequest
+class ChangeBasketItemRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class FilterProductsRequest extends FormRequest
     public function rules()
     {
         return [
-            'min-price' => ['numeric', 'nullable'],
-            'max-price' => ['numeric', 'nullable']
+            'product_id' => ['required', 'numeric', 'exists:products,id'],
+            'quantity' => ['required', 'numeric', 'min:1', 'max:99']
         ];
     }
 }

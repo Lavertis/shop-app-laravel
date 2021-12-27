@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\FilterProductsRequest;
+use App\Http\Requests\Product\FilterProductsRequest;
 use App\Services\Interfaces\ProductServiceInterface;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;

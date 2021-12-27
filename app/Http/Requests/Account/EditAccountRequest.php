@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Account;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateAccountDetailsRequest extends FormRequest
+class EditAccountRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,7 +28,7 @@ class UpdateAccountDetailsRequest extends FormRequest
                 'required_without_all:email,password',
                 'nullable',
                 'unique:users',
-                'alpha_dash',
+                'alpha',
                 'min:4',
                 'max:16'
             ],

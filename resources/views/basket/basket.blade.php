@@ -84,7 +84,7 @@
                 @endforeach
 
                 @if($products->isNotEmpty())
-                    <div class="card p-3 my-4">
+                    <div class="card p-3 my-3">
                         <div class="col-12 ms-auto d-flex flex-column flex-sm-row justify-content-between">
                             <div class="mb-3 my-sm-auto col-12 col-sm-8 col-md-6 col-lg-auto text-center">
                                 <h5 class="m-0">

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UpdateAccountDetailsRequest;
+use App\Http\Requests\Account\EditAccountRequest;
 use App\Services\Interfaces\UserServiceInterface;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -37,7 +37,7 @@ class AccountController extends Controller
         return view('account.edit', ['username' => $username, 'email' => $email]);
     }
 
-    public function postAccountEdit(UpdateAccountDetailsRequest $request): RedirectResponse
+    public function postAccountEdit(EditAccountRequest $request): RedirectResponse
     {
         $username = $request->get('username');
         $email = $request->get('email');

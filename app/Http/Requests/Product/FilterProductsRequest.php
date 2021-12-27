@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Product;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddOrUpdateBasketItemRequest extends FormRequest
+class FilterProductsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class AddOrUpdateBasketItemRequest extends FormRequest
     public function rules()
     {
         return [
-            'product_id' => ['required', 'numeric'],
-            'quantity' => ['required', 'numeric', 'min:1', 'max:99']
+            'min-price' => ['numeric', 'nullable', 'min:0', 'max:99999'],
+            'max-price' => ['numeric', 'nullable', 'min:1', 'max:100000']
         ];
     }
 }
