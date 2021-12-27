@@ -12,9 +12,10 @@ use Illuminate\Database\Eloquent\Model;
  */
 class AddressService implements AddressServiceInterface
 {
-    public function createNewAddress(int $countryId, string $city, string $street): Model|Address
+    public function createNewAddress(int $orderId, int $countryId, string $city, string $street): Model|Address
     {
         return Address::create([
+            'order_id' => $orderId,
             'country_id' => $countryId,
             'city' => $city,
             'street' => $street,

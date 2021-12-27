@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Order extends Model
 {
@@ -14,7 +15,6 @@ class Order extends Model
     protected $fillable = [
         'client_name',
         'client_surname',
-        'address_id',
         'payment_method_id',
         'fast_delivery',
         'order_date'
@@ -25,9 +25,9 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function address(): BelongsTo
+    public function address(): HasOne
     {
-        return $this->belongsTo(Address::class);
+        return $this->hasOne(Address::class);
     }
 
     public function paymentMethod(): BelongsTo

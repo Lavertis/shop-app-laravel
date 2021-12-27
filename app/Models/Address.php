@@ -11,6 +11,7 @@ class Address extends Model
     use HasFactory;
 
     protected $fillable = [
+        'order_id',
         'country_id',
         'city',
         'street'

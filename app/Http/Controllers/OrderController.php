@@ -10,6 +10,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
@@ -38,10 +39,10 @@ class OrderController extends Controller
         return view('order.checkout', ['countries' => $countries]);
     }
 
-    public function placeOrder(Request $request): Factory|View|Application
+    public function placeOrder(Request $request): Redirector|Application|RedirectResponse
     {
         $this->orderService->createNewOrder($request);
-        return $this->history();
+        return redirect('/order-history');
     }
 
     public function history(): Factory|View|Application

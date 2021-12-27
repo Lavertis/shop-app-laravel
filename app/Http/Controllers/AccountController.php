@@ -27,14 +27,14 @@ class AccountController extends Controller
     {
         $username = Auth::user()->username;
         $email = Auth::user()->email;
-        return view('account.account_details', ['username' => $username, 'email' => $email]);
+        return view('account.details', ['username' => $username, 'email' => $email]);
     }
 
     public function accountEdit(): Factory|View|Application
     {
         $username = Auth::user()->username;
         $email = Auth::user()->email;
-        return view('account.account_edit', ['username' => $username, 'email' => $email]);
+        return view('account.edit', ['username' => $username, 'email' => $email]);
     }
 
     public function editAccount(UpdateAccountDetailsRequest $request): RedirectResponse

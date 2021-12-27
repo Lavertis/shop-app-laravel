@@ -18,7 +18,6 @@ class CreateOrdersTable extends Migration
             $table->string('client_name');
             $table->string('client_surname');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('address_id')->constrained()->cascadeOnDelete();
             $table->foreignId('payment_method_id')->constrained()->cascadeOnDelete();
             $table->boolean('fast_delivery');
             $table->dateTime('order_date');

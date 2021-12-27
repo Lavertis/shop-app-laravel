@@ -39,9 +39,6 @@ class OrderService implements OrderServiceInterface
 
     public function createNewOrder(Request $request): void
     {
-        $countryId = $this->countryService->getCountryByCode($request->country)->id;
-        $address = $this->addressService->createNewAddress($countryId, $request->city, $request->street);
-
         $paymentMethod = $this->paymentMethodService->getPaymentMethodByName($request->payment);
         $fastDelivery = $request->fast_delivery === 'on';
 
@@ -50,9 +47,11 @@ class OrderService implements OrderServiceInterface
             'client_surname' => $request->surname,
             'payment_method_id' => $paymentMethod->id,
             'fast_delivery' => $fastDelivery,
-            'address_id' => $address->id,
-            'order_date' => Carbon::now()
+            'order_date' => Carbon::now('Europe/Warsaw')
         ]);
+
+        $countryId = $this->countryService->getCountryByCode($request->country)->id;
+        $this->addressService->createNewAddress($order->id, $countryId, $request->city, $request->street);
 
         $basketItems = $this->basketService->getProductsInBasket();
 
