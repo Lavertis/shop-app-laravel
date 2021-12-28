@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Throwable;
 
 /**
  * Class OrderService
@@ -40,29 +42,33 @@ class OrderService implements OrderServiceInterface
         $this->basketService = $basketService;
     }
 
-
+    /**
+     * @throws Throwable
+     */
     public function createNewOrder(Request $request): void
     {
-        $paymentMethod = $this->paymentMethodService->getPaymentMethodByCode($request->payment);
-        $fastDelivery = $request->fast_delivery === 'on';
+        DB::transaction(function () use ($request) {
+            $paymentMethod = $this->paymentMethodService->getPaymentMethodByCode($request->payment);
+            $fastDelivery = $request->fast_delivery === 'on';
 
-        $order = Auth::user()->orders()->create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'payment_method_id' => $paymentMethod->id,
-            'fast_delivery' => $fastDelivery,
-            'order_date' => Carbon::now('Europe/Warsaw')
-        ]);
+            $order = Auth::user()->orders()->create([
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'payment_method_id' => $paymentMethod->id,
+                'fast_delivery' => $fastDelivery,
+                'order_date' => Carbon::now('Europe/Warsaw')
+            ]);
 
-        $countryId = $this->countryService->getCountryByCode($request->country)->id;
-        $this->addressService->createNewAddress($order->id, $countryId, $request->city, $request->street);
+            $countryId = $this->countryService->getCountryByCode($request->country)->id;
+            $this->addressService->createNewAddress($order->id, $countryId, $request->city, $request->street);
 
-        $basketItems = $this->basketService->getProductsInBasket();
-        foreach ($basketItems as $basketItem) {
-            $order->products()->attach($basketItem->id, ['quantity' => $basketItem->pivot->quantity]);
-        }
+            $basketItems = $this->basketService->getProductsInBasket();
+            foreach ($basketItems as $basketItem) {
+                $order->products()->attach($basketItem->id, ['quantity' => $basketItem->pivot->quantity]);
+            }
 
-        $this->basketService->destroyBasket();
+            $this->basketService->destroyBasket();
+        });
     }
 
     public function getAllOrders(): Collection
