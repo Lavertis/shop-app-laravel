@@ -18,7 +18,7 @@
                     <form action="{{ route('products.filtered') }}" method="get">
                         <div class="d-flex flex-column flex-md-row mx-auto mx-sm-3 mb-4 justify-content-between">
 
-                            <div class="d-flex flex-column col-10 col-md-6 mx-auto mt-2 mb-3 mb-md-0">
+                            <div class="d-flex flex-column col-10 col-sm-8 col-md-6 col-lg-5 mx-auto mt-2 mb-3 mb-md-0">
                                 <div class="my-auto mb-2 mb-md-0">
                                     <span>Price</span>
                                 </div>
@@ -33,11 +33,11 @@
                                 </div>
                             </div>
 
-                            <div class="d-flex flex-column col-10 col-md-5 mx-auto mb-3 mb-md-0">
+                            <div class="d-flex flex-column col-10 col-sm-8 col-md-5 mx-auto">
                                 <div class="my-auto mb-2 mb-md-0">
                                     <span>Sort</span>
                                 </div>
-                                <div class="">
+                                <div class="col-md-8 col-lg-6">
                                     <select class="form-select" name="sort" id="sort">
                                         @if(isset($filters))
                                             @if($filters['sort'] == 'asc')
@@ -66,10 +66,10 @@
 
                         <div
                             class="mt-2 d-flex flex-column flex-sm-row col-12 justify-content-center justify-content-md-end">
-                            <div class="mb-2 mx-auto mx-sm-1 my-sm-auto col-10 col-sm-5 col-md-auto">
+                            <div class="mb-2 mx-auto mx-sm-1 my-sm-auto col-10 col-sm-4 col-md-auto">
                                 <button class="btn btn-primary col-12">Filter</button>
                             </div>
-                            <div class="mb-2 mx-auto mx-sm-1 my-sm-auto col-10 col-sm-5 col-md-auto">
+                            <div class="mb-2 mx-auto mx-sm-1 my-sm-auto col-10 col-sm-4 col-md-auto">
                                 <a href="{{ route('products') }}" class="btn btn-secondary col-12">Reset</a>
                             </div>
                         </div>
