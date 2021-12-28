@@ -18,9 +18,8 @@ class Product extends Model
     protected $fillable = [
         'id',
         'name',
-        'description',
         'price',
-        'order_date'
+        'description',
     ];
 
     public function baskets(): BelongsToMany
