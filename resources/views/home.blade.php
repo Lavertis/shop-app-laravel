@@ -7,8 +7,8 @@
             <div class="col-lg-6 col-md-8 mx-auto">
                 <h1 class="fw-light">Computer Store</h1>
                 <p class="lead text-muted">
-                    We have an extremely wide offer, offer professional advice
-                    and attractive prices and provide an intelligent choice.
+                    Uniquely focused on computers and related products,
+                    we offer more computers and electronic devices than any other retailer.
                 </p>
                 <p>
                     <a href="{{ route('products') }}" class="btn btn-primary my-2">Check out our products</a>
@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        <h1 class="text-center mt-3 mt-lg-0 mb-4">Top selling products</h1>
+        <h2 class="text-center mt-3 mt-lg-0 mb-4">Top selling products</h2>
 
         <div id="carouselBestsellers" data-bs-ride="carousel"
              class="carousel carousel-dark slide col-11 col-sm-10 col-md-9 col-lg-7 col-xl-6 col-xxl-5 my-auto mx-auto">
@@ -69,7 +69,12 @@
             </button>
         </div>
 
-        <h5 class="text-center mt-5" id="visit-count">You visited our site X times</h5>
+        <h5 class="text-center mt-5" id="visit-count">
+            You visited our homepage
+            {{ $visitCount }}
+            @if($visitCount === 1) time @else times @endif
+            from this device
+        </h5>
 
     </div>
 @endsection
