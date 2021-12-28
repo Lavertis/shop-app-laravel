@@ -1,40 +1,27 @@
 require('./bootstrap');
 
-window.sendAddToBasketRequest = function (productId, quantity) {
+window.sendDataAuthorized = async function (url = '', data = {}, method = 'POST') {
     let _token = document.getElementsByName('_token')[0].value; // from logout button
 
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', '/basket/add');
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            console.log(`${quantity} product(s) ${productId} added to basket`)
-            // console.log(xhr.responseText);
-        }
-    };
-    xhr.setRequestHeader('X-CSRF-TOKEN', _token);
-    xhr.send(JSON.stringify({
-        product_id: productId,
-        quantity: quantity,
-    }));
-}
+    let response;
+    await fetch(url, {
+        method: method,
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': _token,
+        },
+        body: JSON.stringify(data) // body data type must match "Content-Type" header
+    }).then((response) => {
+        if (response.status !== 200)
+            return Promise.reject('Request failed');
+        return response.json(); // parses JSON response into native JavaScript objects
+    }).then((json) => {
+        response = json;
+    }).catch((error) => {
+        console.log(error);
+    })
 
-window.sendChangeBasketProductQuantityRequest = function (productId, quantity) {
-    let _token = document.getElementsByName('_token')[0].value; // from logout button
-
-    const xhr = new XMLHttpRequest();
-    xhr.open('PATCH', '/basket/update');
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            console.log(`Product ${productId} quantity changed to`, xhr.responseText);
-        }
-    };
-    xhr.setRequestHeader('X-CSRF-TOKEN', _token);
-    xhr.send(JSON.stringify({
-        product_id: productId,
-        quantity: quantity,
-    }));
+    return response;
 }
 
 window.sleep = function (ms) {

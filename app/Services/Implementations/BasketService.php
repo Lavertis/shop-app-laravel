@@ -35,7 +35,7 @@ class BasketService implements BasketServiceInterface
             return Auth::user()->basket->products;
     }
 
-    public function addToBasket(Request $request): void
+    public function addToBasket(Request $request): array
     {
         $this->makeSureBasketExists();
 
@@ -48,23 +48,29 @@ class BasketService implements BasketServiceInterface
             if ($this->isQuantityValid($quantity + $currentQuantity)) {
                 $product->pivot->quantity += $quantity;
                 $product->pivot->save();
+                return ['product_id' => $productId, 'quantity' => $product->pivot->quantity];
             }
         }
         else
             Auth::user()->basket->products()->attach($productId, $request->only('quantity'));
+
+        return ['product_id' => $productId, 'quantity' => 1];
     }
 
-    public function changeProductQuantity(Request $request): int
+    public function changeProductQuantity(Request $request): bool|array
     {
         $productId = $request->get('product_id');
         $quantity = $request->get('quantity');
         $product = Auth::user()->basket->products()->find($productId);
+
+        if ($product == null)
+            return false;
+
         if ($this->isQuantityValid($quantity)) {
             $product->pivot->quantity = $quantity;
             $product->pivot->save();
         }
-
-        return $product->pivot->quantity;
+        return ['product_id' => $productId, 'quantity' => $product->pivot->quantity];
     }
 
     public function removeFromBasket(Request $request): int

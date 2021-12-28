@@ -125,7 +125,7 @@
 
         calculateFinalPrice();
 
-        // Add + & - button callbacks
+        // Add + and - button callbacks
         let basketItems = document.getElementsByClassName('basket-item');
         for (const element of basketItems) {
             let quantityPrice = element.getElementsByClassName('price')[0];
@@ -141,9 +141,9 @@
                 else if (input.value === '99')
                     plusButton.disabled = false;
 
-                const quantity = parseInt(input.value) - 1;
-                sendChangeBasketProductQuantityRequest(productId, quantity);
-                input.value = quantity.toString();
+                let quantity = parseInt(input.value) - 1;
+                sendDataAuthorized('/basket/update', {product_id: productId, quantity: quantity}, 'PATCH');
+                input.value = quantity;
                 quantityPrice.textContent = (productBasePrice * quantity).toFixed(2);
                 calculateFinalPrice();
             })
@@ -154,9 +154,9 @@
                 else if (input.value === '98')
                     plusButton.disabled = true;
 
-                const quantity = parseInt(input.value) + 1;
-                sendChangeBasketProductQuantityRequest(productId, quantity);
-                input.value = quantity.toString();
+                let quantity = parseInt(input.value) + 1;
+                sendDataAuthorized('/basket/update', {product_id: productId, quantity: quantity}, 'PATCH');
+                input.value = quantity;
                 quantityPrice.textContent = (productBasePrice * quantity).toFixed(2);
                 calculateFinalPrice();
             })

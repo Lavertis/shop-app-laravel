@@ -177,8 +177,8 @@
                 basketIcon.hidden = true;
                 loadingSpinner.hidden = false;
 
-                sendAddToBasketRequest(this.dataset.productId, 1);
-                await sleep(1000);
+                await sendDataAuthorized('/basket/add', {product_id: this.dataset.productId, quantity: 1})
+                await sleep(500);
 
                 loadingSpinner.hidden = true;
                 basketIcon.hidden = false;

@@ -82,8 +82,8 @@
             loadingSpinner.hidden = false;
 
             let quantity = document.getElementById('quantity').value;
-            sendAddToBasketRequest(this.dataset.productId, quantity);
-            await sleep(1000);
+            await sendDataAuthorized('/basket/add', {product_id: this.dataset.productId, quantity: quantity})
+            await sleep(500);
 
             loadingSpinner.hidden = true;
             basketIcon.hidden = false;

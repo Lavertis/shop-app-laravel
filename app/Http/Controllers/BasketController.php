@@ -8,7 +8,9 @@ use App\Services\Interfaces\BasketServiceInterface;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
+use Response;
 
 class BasketController extends Controller
 {
@@ -29,14 +31,19 @@ class BasketController extends Controller
         return view('Basket.Basket', ['products' => $products]);
     }
 
-    public function postAddItem(ChangeBasketItemRequest $request)
+    public function postAddItem(ChangeBasketItemRequest $request): JsonResponse
     {
-        return $this->basketService->addToBasket($request);
+        $res = $this->basketService->addToBasket($request);
+        return Response::json($res);
     }
 
-    public function patchUpdateItem(ChangeBasketItemRequest $request)
+    public function patchUpdateItem(ChangeBasketItemRequest $request): JsonResponse
     {
-        return $this->basketService->changeProductQuantity($request);
+        $res = $this->basketService->changeProductQuantity($request);
+        if (!$res)
+            return Response::json(['error' => 'Product with requested id not in basket'], 422);
+        else
+            return Response::json($res);
     }
 
     public function postDeleteItem(RemoveBasketItemRequest $request): RedirectResponse
