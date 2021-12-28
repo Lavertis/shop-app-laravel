@@ -39,20 +39,14 @@
                                 </div>
                                 <div class="col-md-8 col-lg-6">
                                     <select class="form-select" name="sort" id="sort">
-                                        @if(isset($filters))
-                                            @if($filters['sort'] == 'asc')
-                                                <option selected></option>
-                                                <option value="asc" selected>Ascending</option>
-                                                <option value="desc">Descending</option>
-                                            @elseif($filters['sort'] == 'desc')
-                                                <option selected></option>
-                                                <option value="asc">Ascending</option>
-                                                <option value="desc" selected>Descending</option>
-                                            @else
-                                                <option selected></option>
-                                                <option value="asc">Ascending</option>
-                                                <option value="desc">Descending</option>
-                                            @endif
+                                        @if(isset($filters) && $filters['sort'] == 'asc')
+                                            <option></option>
+                                            <option value="asc" selected>Ascending</option>
+                                            <option value="desc">Descending</option>
+                                        @elseif(isset($filters) && $filters['sort'] == 'desc')
+                                            <option></option>
+                                            <option value="asc">Ascending</option>
+                                            <option value="desc" selected>Descending</option>
                                         @else
                                             <option selected></option>
                                             <option value="asc">Ascending</option>
