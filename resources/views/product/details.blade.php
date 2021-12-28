@@ -1,7 +1,7 @@
 @extends('layouts.app', ['title' => 'Product details'])
 
 @section('content')
-    <div class="container my-5 col-11 col-lg-11 col-xl-9 col-xxl-7 bg-white rounded shadow">
+    <div class="container my-5 col-11 col-md-9 col-xl-8 col-xxl-7 bg-white rounded shadow">
 
         <div class="mt-4 text-center">
             <h2>{{ $product->name }}</h2>
@@ -9,26 +9,27 @@
 
         <div class="d-lg-flex me-lg-4">
 
-            <div class="mt-4 col-12 col-lg-8">
+            <div class="mt-4 col-12 col-lg-7 col-xxl-7">
                 <img src="{{ asset('images/products/'.$product->id.'.jpg') }}"
                      class="img-fluid" alt="{{ $product->name }}">
             </div>
 
-            <div class="my-auto text-center col-12 col-lg-4 border rounded-3 p-3">
+            <div class="my-auto text-center col-12 col-lg-5 col-xxl-5 border rounded-3 p-3">
                 <div>
                     <h4>$<span>{{ number_format($product->price, 2) }}</span></h4>
                 </div>
-                <div class="d-inline-block my-2">
-                    <label for="quantity">
+                <div class="d-inline-block my-2 col-8 col-sm-5 col-md-3 col-lg-auto">
+                    <div class="d-grid">
                         <select class="form-select" name="quantity" id="quantity">
                             <option value="1" selected>1</option>
                             @foreach(range(2, 10) as $i)
                                 <option value="{{ $i }}">{{ $i }}</option>
                             @endforeach
                         </select>
-                    </label>
+                    </div>
                 </div>
-                <button class="btn btn-outline-success" id="add-to-basket" data-product-id="{{ $product->id }}"
+                <button class="btn btn-outline-success col-8 col-sm-5 col-md-3 col-lg-auto" id="add-to-basket"
+                        data-product-id="{{ $product->id }}"
                         @guest data-bs-toggle="modal" data-bs-target="#addToBasket" @endguest>
                     <span class="spinner-border spinner-border-sm"
                           role="status" aria-hidden="true" hidden></span>
