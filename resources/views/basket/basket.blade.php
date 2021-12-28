@@ -66,7 +66,7 @@
                                 </div>
 
                                 <div class="px-2 col-6 col-sm-4 col-md-6 col-lg-auto">
-                                    <form action="{{ route('basket.delete') }}" method="post">
+                                    <form action="{{ route('basket.delete.item') }}" method="post">
                                         @csrf
                                         <input type="hidden" name="product_id" value="{{ $product->id }}">
                                         <div class="d-grid">
@@ -86,16 +86,29 @@
                 @if($products->isNotEmpty())
                     <div class="card p-3 my-3">
                         <div class="col-12 ms-auto d-flex flex-column flex-sm-row justify-content-between">
-                            <div class="mb-3 my-sm-auto col-12 col-sm-8 col-md-6 col-lg-auto text-center">
+                            <div class="mb-3 my-sm-auto col-12 col-sm-6 col-md-6 col-lg-auto text-center">
                                 <h5 class="m-0">
                                     Total price:&nbsp
                                     <b>$<span id="final-price"></span></b>
                                 </h5>
                             </div>
-                            <div class="col-12 col-sm-4 col-md-6 col-lg-3">
-                                <a class="btn btn-success col-12" href="{{ route('order.checkout') }}">
-                                    Checkout
-                                </a>
+                            <div
+                                class="d-flex col-12 col-sm-6 col-md-6 col-lg-8 justify-content-around justify-content-sm-end">
+                                <div class="mx-sm-2 col-5 col-sm-auto">
+                                    <form action="{{ route('basket.destroy') }}" method="post">
+                                        @csrf
+                                        <div class="d-grid">
+                                            <button type="submit" class="btn btn-danger">
+                                                <i class="fa fa-trash text-white"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-5 col-sm-8 col-md-6 col-lg-5">
+                                    <a class="btn btn-success col-12" href="{{ route('order.checkout') }}">
+                                        Checkout
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -142,7 +155,12 @@
                     plusButton.disabled = false;
 
                 let quantity = parseInt(input.value) - 1;
-                sendDataAuthorized('/basket/update', {product_id: productId, quantity: quantity}, 'PATCH');
+
+                sendDataAuthorized('/basket/update', {
+                    product_id: productId,
+                    quantity: quantity
+                }, 'PATCH');
+
                 input.value = quantity;
                 quantityPrice.textContent = (productBasePrice * quantity).toFixed(2);
                 calculateFinalPrice();
@@ -155,7 +173,12 @@
                     plusButton.disabled = true;
 
                 let quantity = parseInt(input.value) + 1;
-                sendDataAuthorized('/basket/update', {product_id: productId, quantity: quantity}, 'PATCH');
+
+                sendDataAuthorized('/basket/update', {
+                    product_id: productId,
+                    quantity: quantity
+                }, 'PATCH');
+
                 input.value = quantity;
                 quantityPrice.textContent = (productBasePrice * quantity).toFixed(2);
                 calculateFinalPrice();

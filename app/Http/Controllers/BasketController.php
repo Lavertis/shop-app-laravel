@@ -46,6 +46,12 @@ class BasketController extends Controller
             return Response::json($res);
     }
 
+    public function postDestroyBasket(): RedirectResponse
+    {
+        $this->basketService->destroyBasket();
+        return back();
+    }
+
     public function postDeleteItem(RemoveBasketItemRequest $request): RedirectResponse
     {
         $this->basketService->removeFromBasket($request);

@@ -46,8 +46,9 @@ Route::get('/products/{id}', [ProductController::class, 'getProductDetails'])->n
 
 Route::get('/basket', [BasketController::class, 'getBasket'])->name('basket');
 Route::post('/basket/add', [BasketController::class, 'postAddItem'])->name('basket.add');
-Route::patch('/basket/update', [BasketController::class, 'patchUpdateItem'])->name('basket.update');
-Route::post('/basket/delete', [BasketController::class, 'postDeleteItem'])->name('basket.delete');
+Route::patch('/basket/update', [BasketController::class, 'patchUpdateItem'])->name('basket.update.quantity');
+Route::post('/basket/delete', [BasketController::class, 'postDeleteItem'])->name('basket.delete.item');
+Route::post('/basket/destroy', [BasketController::class, 'postDestroyBasket'])->name('basket.destroy');
 
 Route::get('/checkout', [OrderController::class, 'getCheckout'])->name('order.checkout');
 Route::post('/checkout', [OrderController::class, 'postCheckout'])->name('order.place');
