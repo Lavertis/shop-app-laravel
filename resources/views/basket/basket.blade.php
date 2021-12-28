@@ -112,6 +112,8 @@
         // Calculate final price
         function calculateFinalPrice() {
             let basketItems = document.getElementsByClassName('basket-item');
+            if (basketItems.length === 0)
+                return;
             const finalPriceSpan = document.getElementById('final-price');
             let totalPrice = 0.0;
             for (const element of basketItems) {

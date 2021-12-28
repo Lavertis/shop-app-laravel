@@ -48,5 +48,26 @@ class ProductSeeder extends Seeder
             'description' => "A view found nowhere else.\r\nIf you’re looking for a TV like no other, look no further. LG OLED TV is a work of art, a big-screen cinema, a portal to gaming worlds, and a front row seat to the biggest sporting events. It’s everything you want TV to be.",
             'price' => 2500.00
         ]);
+
+        Product::firstOrCreate([
+            'id' => 665466,
+            'name' => "Gigabyte GeForce RTX 3060 Ti EAGLE OC LHR 8GB GDDR6",
+            'description' => "The WINDFORCE 2X cooling system features 2X100mm unique blade fans, alternate spinning, 4 composite copper heat pipes direct touch GPU, 3D active fan and Screen cooling, which together provide high efficiency heat dissipation.",
+            'price' => 1000.00
+        ]);
+
+        Product::firstOrCreate([
+            'id' => 661535,
+            'name' => "Huawei MateBook 13 R7-3700U/16GB/512/Win10",
+            'description' => "With an 88% screen-to-body ratio, the HUAWEI MateBook 13's slender 4.4 mm bezel makes more room for bright, rich, and vivid graphics to ignite your imagination. \r\nLightweight yet robust, the HUAWEI MateBook 13 is designed for optimal portability. Its slim line 14.9 mm metallic frame is meticulously crafted with a diamond cut finish on each corner, giving it an ultra-modern premium look and feel.",
+            'price' => 738.00
+        ]);
+
+        Product::firstOrCreate([
+            'id' => 641437,
+            'name' => "Xiaomi POCO X3 PRO NFC 8/256GB Phantom Black 120Hz",
+            'description' => "Compared with POCO X3 NFC, POCO X3 Pro elevates performance by featuring Qualcomm SnapdragonTM 860 Mobile Platform, the leading 4G flagship processor in 2021. The powerful platform allows you to enjoy mobile games with high speed, even when playing graphically demanding games on high settings. Along with enhanced UFS 3.1, the device offers snappy read and write speeds, so you don't have to wait long to load files, games and apps.",
+            'price' => 295.00
+        ]);
     }
 }

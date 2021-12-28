@@ -12,12 +12,12 @@
             </div>
 
             <div class="card mb-4">
-                <div class="card-body">
+                <div class="card-body p-4">
                     <h5 class="card-title">Filters</h5>
                     <form action="{{ route('products.filtered') }}" method="get">
                         <div class="d-flex flex-column flex-md-row mx-auto mx-sm-3 mb-3 justify-content-between">
 
-                            <div class="d-flex flex-column col-8 col-md-6 mx-auto mt-2 mb-3 mb-md-0">
+                            <div class="d-flex flex-column col-10 col-md-6 mx-auto mt-2 mb-3 mb-md-0">
                                 <div class="my-auto mb-2 mb-md-0">
                                     <span>Price</span>
                                 </div>
@@ -32,7 +32,7 @@
                                 </div>
                             </div>
 
-                            <div class="d-flex flex-column col-8 col-md-5 mx-auto mb-3 mb-md-0">
+                            <div class="d-flex flex-column col-10 col-md-5 mx-auto mb-3 mb-md-0">
                                 <div class="my-auto mb-2 mb-md-0">
                                     <span>Sort</span>
                                 </div>
@@ -63,11 +63,12 @@
 
                         </div>
 
-                        <div class="mt-2 d-flex flex-column flex-sm-row col-12 justify-content-end">
-                            <div class="mb-2 mx-auto mx-sm-1 my-sm-auto col-8 col-sm-auto">
+                        <div
+                            class="mt-2 d-flex flex-column flex-sm-row col-12 justify-content-center justify-content-md-end">
+                            <div class="mb-2 mx-auto mx-sm-1 my-sm-auto col-10 col-sm-5 col-md-auto">
                                 <button class="btn btn-primary col-12">Filter</button>
                             </div>
-                            <div class="mb-2 mx-auto mx-sm-1 my-sm-auto col-8 col-sm-auto">
+                            <div class="mb-2 mx-auto mx-sm-1 my-sm-auto col-10 col-sm-5 col-md-auto">
                                 <a href="{{ route('products') }}" class="btn btn-secondary col-12">Reset</a>
                             </div>
                         </div>
@@ -119,7 +120,7 @@
 
 @section('js')
     <script>
-
+        
         // Price filter input callbacks
         let minPriceInput = document.getElementById('min-price');
         let maxPriceInput = document.getElementById('max-price');
@@ -128,22 +129,22 @@
             if (this.value === "")
                 return;
 
-            if (maxPriceInput.value !== "" && this.value > maxPriceInput.value)
+            if (maxPriceInput.value !== "" && parseInt(this.value) > parseInt(maxPriceInput.value))
                 this.value = maxPriceInput.value
-            else if (this.value < 0)
+            else if (parseInt(this.value) < 0)
                 this.value = 0
-            else if (this.value > 100000)
+            else if (parseInt(this.value) > 100000)
                 this.value = 100000
         })
         maxPriceInput.addEventListener('change', function () {
             if (this.value === "")
                 return;
 
-            if (minPriceInput.value !== "" && this.value < minPriceInput.value)
+            if (minPriceInput.value !== "" && parseInt(this.value) < parseInt(minPriceInput.value))
                 this.value = minPriceInput.value
-            else if (this.value < 0)
+            else if (parseInt(this.value) < 0)
                 this.value = 0
-            else if (this.value > 100000)
+            else if (parseInt(this.value) > 100000)
                 this.value = 100000
         })
 
