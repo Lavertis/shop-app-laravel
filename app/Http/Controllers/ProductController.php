@@ -19,7 +19,6 @@ class ProductController extends Controller
     public function __construct(ProductServiceInterface $productService)
     {
         $this->productService = $productService;
-        $this->middleware('auth');
     }
 
     public function getProducts(): Factory|View|Application

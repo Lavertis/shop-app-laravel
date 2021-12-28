@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container-fluid mb-5">
+
         <div class="col-11 col-xl-9 col-xxl-7 mx-auto">
 
             <div class="mt-4 mb-4">
@@ -15,7 +16,7 @@
                 <div class="card-body p-4">
                     <h5 class="card-title">Filters</h5>
                     <form action="{{ route('products.filtered') }}" method="get">
-                        <div class="d-flex flex-column flex-md-row mx-auto mx-sm-3 mb-3 justify-content-between">
+                        <div class="d-flex flex-column flex-md-row mx-auto mx-sm-3 mb-4 justify-content-between">
 
                             <div class="d-flex flex-column col-10 col-md-6 mx-auto mt-2 mb-3 mb-md-0">
                                 <div class="my-auto mb-2 mb-md-0">
@@ -93,7 +94,8 @@
                                     $<span class="price">{{ number_format($product->price, 2) }}</span>
                                 </h5>
                                 <button class="btn btn-outline-success position-relative z-index-1 col-6 col-md-3"
-                                        name="add-to-basket" data-product-id="{{ $product->id }}">
+                                        name="add-to-basket" data-product-id="{{ $product->id }}"
+                                        @guest data-bs-toggle="modal" data-bs-target="#addToBasket" @endguest>
                                     <span class="spinner-border spinner-border-sm"
                                           role="status" aria-hidden="true" hidden></span>
                                     <i class="fa fa-shopping-basket"></i>
@@ -116,11 +118,31 @@
 
         </div>
     </div>
+
+    <div class="modal fade" id="addToBasket" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+         aria-labelledby="addToBasketLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addToBasketLabel">Not logged in</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    You must be logged in to add a product to the basket.
+                </div>
+                <div class="modal-footer">
+                    <div class="col-10 col-sm-6 col-md-4 d-grid mx-auto">
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('js')
     <script>
-        
+
         // Price filter input callbacks
         let minPriceInput = document.getElementById('min-price');
         let maxPriceInput = document.getElementById('max-price');
@@ -148,6 +170,7 @@
                 this.value = 100000
         })
 
+        @auth
         // Add to basket callbacks
         let buttons = document.getElementsByName('add-to-basket');
         for (const button of buttons) {
@@ -168,5 +191,6 @@
                 this.dataset.onClickEnabled = 'true';
             });
         }
+        @endauth
     </script>
 @endsection
