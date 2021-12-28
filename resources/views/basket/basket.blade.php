@@ -29,7 +29,7 @@
                     <div class="card d-flex flex-lg-row col-sm-6 col-lg-12 basket-item">
 
                         <div class="col-lg-2 my-2">
-                            <img src="{{ asset('images/products/'.$product->id.'.jpg') }}"
+                            <img src="{{ asset('images/products/thumbnails/'.$product->id.'.jpg') }}"
                                  alt="{{ $product->name }}" class="img-fluid">
                         </div>
 

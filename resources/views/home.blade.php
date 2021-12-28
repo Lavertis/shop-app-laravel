@@ -19,7 +19,7 @@
         <h1 class="text-center mt-3 mt-lg-0 mb-4">Top selling products</h1>
 
         <div id="carouselBestsellers" data-bs-ride="carousel"
-             class="carousel carousel-dark slide col-11 col-sm-10 col-md-9 col-lg-8 col-xl-7 col-xxl-6 my-auto mx-auto">
+             class="carousel carousel-dark slide col-11 col-sm-10 col-md-9 col-lg-7 col-xl-6 col-xxl-5 my-auto mx-auto">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselBestsellers" data-bs-slide-to="0" class="active"
                         aria-current="true" aria-label="Slide 1"></button>
