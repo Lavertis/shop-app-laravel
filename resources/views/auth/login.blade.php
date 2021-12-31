@@ -4,11 +4,11 @@
     <div class="container my-auto">
         <div class="col-10 col-sm-8 col-md-6 col-lg-5 col-xl-4 mx-auto bg-light rounded-3 p-5 shadow">
 
-            @if(session()->has('status'))
+            @error('login_details')
                 <div class="alert alert-danger text-center">
-                    {{ session()->get('status') }}
+                    {{ $message }}
                 </div>
-            @endif
+            @enderror
 
             <form action="{{ route('login') }}" method="post" class="needs-validation">
                 @csrf

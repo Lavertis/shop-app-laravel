@@ -39,6 +39,6 @@ class LoginController extends Controller
                 return redirect()->route('home');
         }
         else
-            return back()->withInput()->with('status', 'Invalid login details');
+            return back()->withErrors(['login_details' => 'Wrong username or password']);
     }
 }
