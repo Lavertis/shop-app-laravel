@@ -185,6 +185,7 @@ return [
         App\Providers\OrderServiceProvider::class,
         App\Providers\AddressServiceProvider::class,
         App\Providers\PaymentMethodServiceProvider::class,
+        App\Providers\HomeServiceProvider::class,
     ],
 
     /*

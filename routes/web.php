@@ -30,9 +30,6 @@ Route::get('/login', [LoginController::class, 'getLogin'])->name('login');
 Route::post('/login', [LoginController::class, 'postLogin']);
 
 Route::post('/logout', [LogoutController::class, 'postLogout'])->name('logout');
-Route::get('/logout', function () {
-    return abort(404);
-});
 
 Route::get('/account/details', [AccountController::class, 'getAccountDetails'])->name('account.details');
 Route::get('/account/edit', [AccountController::class, 'getAccountEdit'])->name('account.edit');
@@ -54,3 +51,7 @@ Route::get('/checkout', [OrderController::class, 'getCheckout'])->name('order.ch
 Route::post('/checkout', [OrderController::class, 'postCheckout'])->name('order.place');
 Route::get('/orders/history', [OrderController::class, 'getHistory'])->name('order.history');
 Route::post('/orders/delete', [OrderController::class, 'postDelete'])->name('order.delete');
+
+Route::fallback(function () {
+    return abort(404);
+});

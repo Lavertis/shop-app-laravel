@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Services\Interfaces\UserServiceInterface;
 use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
 
 class LogoutController extends Controller
 {
@@ -21,9 +21,9 @@ class LogoutController extends Controller
         $this->middleware(['auth']);
     }
 
-    public function postLogout(): Factory|View|Application
+    public function postLogout(): Redirector|Application|RedirectResponse
     {
         $this->userService->logout();
-        return view('home');
+        return redirect()->route('home');
     }
 }

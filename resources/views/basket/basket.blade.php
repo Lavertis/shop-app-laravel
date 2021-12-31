@@ -104,7 +104,7 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="col-5 col-sm-8 col-md-6 col-lg-5">
+                                <div class="col-5 col-sm-8 col-md-6 col-lg-3">
                                     <a class="btn btn-success col-12" href="{{ route('order.checkout') }}">
                                         Checkout
                                     </a>

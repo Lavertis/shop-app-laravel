@@ -30,10 +30,7 @@
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
                     <input type="password" name="password" id="password" required
-                           class="form-control
-                                    @if ($errors->any() && !$errors->get('password')) is-valid
-                                    @elseif($errors->get('password')) is-invalid
-                                    @endif">
+                           class="form-control @if ($errors->get('password')) is-invalid @endif">
                     @error('password')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror

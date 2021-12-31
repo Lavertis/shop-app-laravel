@@ -53,10 +53,10 @@ class AccountController extends Controller
         return redirect()->route('account.details');
     }
 
-    public function postAccountDelete(): Factory|View|Application
+    public function postAccountDelete(): RedirectResponse
     {
         $id = Auth::user()->id;
         $this->userService->deleteUser($id);
-        return view('home');
+        return redirect()->route('home');
     }
 }

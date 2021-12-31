@@ -16,11 +16,11 @@
                 <div class="card-body p-4">
                     <h5 class="card-title">Filters</h5>
                     <form action="{{ route('products.filtered') }}" method="get">
-                        <div class="d-flex flex-column flex-md-row mx-auto mx-sm-3 mb-4 justify-content-between">
+                        <div class="d-flex flex-column flex-md-row mx-auto mb-4 mb-lg-3 justify-content-between">
 
                             <div class="d-flex flex-column col-10 col-sm-8 col-md-6 col-lg-5 mx-auto mt-2 mb-3 mb-md-0">
                                 <div class="my-auto mb-2 mb-md-0">
-                                    <span>Price</span>
+                                    <span>Price range</span>
                                 </div>
                                 <div class="d-flex flex-column flex-sm-row">
                                     <input type="number" min="0" class="form-control mb-2 mb-sm-0"
@@ -35,7 +35,7 @@
 
                             <div class="d-flex flex-column col-10 col-sm-8 col-md-5 mx-auto">
                                 <div class="my-auto mb-2 mb-md-0">
-                                    <span>Sort</span>
+                                    <span>Sort by price</span>
                                 </div>
                                 <div class="col-md-8 col-lg-6">
                                     <select class="form-select" name="sort" id="sort">
@@ -90,7 +90,7 @@
                                 <button
                                     class="btn btn-outline-success position-relative z-index-1 col-6 col-md-3 col-xxl-3"
                                     name="add-to-basket" data-product-id="{{ $product->id }}"
-                                        @guest data-bs-toggle="modal" data-bs-target="#addToBasket" @endguest>
+                                    @guest data-bs-toggle="modal" data-bs-target="#addToBasket" @endguest>
                                     <span class="spinner-border spinner-border-sm"
                                           role="status" aria-hidden="true" hidden></span>
                                     <i class="fa fa-shopping-basket"></i>
@@ -111,7 +111,7 @@
                 @endif
             </div>
 
-            <div class="pagination justify-content-center mt-3">
+            <div class="pagination justify-content-center mt-4">
                 {!! $products->links() !!}
             </div>
 

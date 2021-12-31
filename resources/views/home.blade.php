@@ -1,7 +1,7 @@
 @extends('layouts.app', ['title' => 'Homepage'])
 
 @section('content')
-    <div class="container my-5">
+    <div class="container mt-4 mb-5">
 
         <div class="row py-lg-5 text-center">
             <div class="col-lg-6 col-md-8 mx-auto">
@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        <h2 class="text-center mt-3 mt-lg-0 mb-4">Top selling products</h2>
+        <h2 class="text-center mt-lg-0 mb-4">Top selling products</h2>
 
         <div id="carouselBestsellers" data-bs-ride="carousel"
              class="carousel carousel-dark slide col-11 col-sm-10 col-md-9 col-lg-7 col-xl-6 col-xxl-5 my-auto mx-auto">
@@ -28,7 +28,7 @@
                 <button type="button" data-bs-target="#carouselBestsellers" data-bs-slide-to="2"
                         aria-label="Slide 3"></button>
             </div>
-            <div class="carousel-inner rounded">
+            <div class="carousel-inner rounded shadow">
                 <div class="carousel-item active bg-white" data-bs-interval="10000">
                     <img src="{{ asset('images/products/423303.jpg') }}" class="d-block w-100" alt="Product 1">
                     <div class="carousel-caption d-none d-md-block">
