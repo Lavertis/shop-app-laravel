@@ -23,7 +23,7 @@ class ProductController extends Controller
 
     public function getProducts(): Factory|View|Application
     {
-        $products = $this->productService->getAllProducts();
+        $products = $this->productService->getAllProducts(8);
         return view('product.products', ['products' => $products]);
     }
 
@@ -32,7 +32,7 @@ class ProductController extends Controller
         $min = $request->get('min-price');
         $max = $request->get('max-price');
         $sort = $request->get('sort');
-        $products = $this->productService->filterProducts($request);
+        $products = $this->productService->filterProducts($request, 8);
 
         return view('product.products', [
             'products' => $products,

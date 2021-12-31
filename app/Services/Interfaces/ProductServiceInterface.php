@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 interface ProductServiceInterface
 {
-    public function getAllProducts();
+    public function getAllProducts(int $productsPerPage);
 
-    public function filterProducts(Request $request);
+    public function filterProducts(Request $request, int $productsPerPage);
 
     public function getProductById(string $id);
 }

@@ -87,8 +87,9 @@
                                 <h5 class="card-text my-auto col-6 col-xxl-auto">
                                     $<span class="price">{{ number_format($product->price, 2) }}</span>
                                 </h5>
-                                <button class="btn btn-outline-success position-relative z-index-1 col-6 col-md-3"
-                                        name="add-to-basket" data-product-id="{{ $product->id }}"
+                                <button
+                                    class="btn btn-outline-success position-relative z-index-1 col-6 col-md-3 col-xxl-3"
+                                    name="add-to-basket" data-product-id="{{ $product->id }}"
                                         @guest data-bs-toggle="modal" data-bs-target="#addToBasket" @endguest>
                                     <span class="spinner-border spinner-border-sm"
                                           role="status" aria-hidden="true" hidden></span>
@@ -108,6 +109,10 @@
                         </div>
                     @endif
                 @endif
+            </div>
+
+            <div class="pagination justify-content-center mt-3">
+                {!! $products->links() !!}
             </div>
 
         </div>
