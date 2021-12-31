@@ -47,8 +47,9 @@ class OrderController extends Controller
 
     public function getHistory(): Factory|View|Application
     {
-        $orders = $this->orderService->getAllOrders();
-        return view('order.history', ['orders' => $orders]);
+        $orders = $this->orderService->getAllOrders(10);
+        $orderCount = $this->orderService->getOrderCount();
+        return view('order.history', ['orders' => $orders, 'orderCount' => $orderCount]);
     }
 
     public function postDelete(OrderDeleteRequest $request): Redirector|Application|RedirectResponse

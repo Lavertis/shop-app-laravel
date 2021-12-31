@@ -7,7 +7,7 @@ use App\Services\Interfaces\BasketServiceInterface;
 use App\Services\Interfaces\CountryServiceInterface;
 use App\Services\Interfaces\OrderServiceInterface;
 use App\Services\Interfaces\PaymentMethodServiceInterface;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -71,9 +71,14 @@ class OrderService implements OrderServiceInterface
         });
     }
 
-    public function getAllOrders(): Collection
+    public function getAllOrders(int $perPage): LengthAwarePaginator
     {
-        return Auth::user()->orders()->orderBy('order_date', 'DESC')->get();
+        return Auth::user()->orders()->orderBy('order_date', 'DESC')->paginate($perPage);
+    }
+
+    public function getOrderCount(): int
+    {
+        return Auth::user()->orders->count();
     }
 
     public function deleteOrder(int $orderId)

@@ -9,8 +9,8 @@
             <div class="text-white p-5 shadow-sm rounded banner-gradient">
                 @if($orders->isNotEmpty())
                     <h5 class="display-6">
-                        You have {{ $orders->count() }}
-                        @if($orders->count() > 1)
+                        You have {{ $orderCount }}
+                        @if($orderCount > 1)
                             orders
                         @else()
                             order
@@ -108,6 +108,10 @@
                     </div>
                 </div>
             @endforeach
+        </div>
+
+        <div class="pagination justify-content-center mt-4">
+            {!! $orders->links() !!}
         </div>
 
     </div>
