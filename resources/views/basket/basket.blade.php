@@ -66,7 +66,7 @@
                                 </div>
 
                                 <div class="px-2 col-6 col-sm-4 col-md-6 col-lg-auto">
-                                    <form action="{{ route('basket.delete.item') }}" method="post">
+                                    <form action="{{ route('basket.remove_item') }}" method="post">
                                         @csrf
                                         <input type="hidden" name="product_id" value="{{ $product->id }}">
                                         <div class="d-grid">

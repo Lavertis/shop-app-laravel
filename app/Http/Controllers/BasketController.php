@@ -52,7 +52,7 @@ class BasketController extends Controller
         return back();
     }
 
-    public function postDeleteItem(RemoveBasketItemRequest $request): RedirectResponse
+    public function postRemoveItem(RemoveBasketItemRequest $request): RedirectResponse
     {
         $this->basketService->removeFromBasket($request);
         return back();

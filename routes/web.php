@@ -23,34 +23,45 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'getHome'])->name('home');
 
-Route::get('/register', [RegisterController::class, 'getRegister'])->name('register');
-Route::post('/register', [RegisterController::class, 'postRegister']);
+Route::prefix('register')->group(function () {
+    Route::get('/', [RegisterController::class, 'getRegister'])->name('register');
+    Route::post('/', [RegisterController::class, 'postRegister']);
+});
 
-Route::get('/login', [LoginController::class, 'getLogin'])->name('login');
-Route::post('/login', [LoginController::class, 'postLogin']);
+Route::prefix('login')->group(function () {
+    Route::get('/', [LoginController::class, 'getLogin'])->name('login');
+    Route::post('/', [LoginController::class, 'postLogin']);
+});
 
 Route::post('/logout', [LogoutController::class, 'postLogout'])->name('logout');
 
-Route::get('/account/details', [AccountController::class, 'getAccountDetails'])->name('account.details');
-Route::get('/account/edit', [AccountController::class, 'getAccountEdit'])->name('account.edit');
-Route::post('/account/edit', [AccountController::class, 'postAccountEdit'])->name('account.edit');
-Route::post('/account/delete', [AccountController::class, 'postAccountDelete'])->name('account.delete');
+Route::prefix('account')->group(function () {
+    Route::get('details', [AccountController::class, 'getAccountDetails'])->name('account.details');
+    Route::get('edit', [AccountController::class, 'getAccountEdit'])->name('account.edit');
+    Route::post('edit', [AccountController::class, 'postAccountEdit']);
+    Route::post('delete', [AccountController::class, 'postAccountDelete'])->name('account.delete');
+});
 
+Route::prefix('products')->group(function () {
+    Route::get('/', [ProductController::class, 'getProducts'])->name('products');
+    Route::get('filtered', [ProductController::class, 'getProductsFiltered'])->name('products.filtered');
+    Route::get('{id}', [ProductController::class, 'getProductDetails'])->name('product.details');
+});
 
-Route::get('/products', [ProductController::class, 'getProducts'])->name('products');
-Route::get('/products/filtered', [ProductController::class, 'getProductsFiltered'])->name('products.filtered');
-Route::get('/products/{id}', [ProductController::class, 'getProductDetails'])->name('product.details');
+Route::prefix('basket')->group(function () {
+    Route::get('/', [BasketController::class, 'getBasket'])->name('basket');
+    Route::post('add', [BasketController::class, 'postAddItem'])->name('basket.add_item');
+    Route::patch('update', [BasketController::class, 'patchUpdateItem'])->name('basket.update_item');
+    Route::post('delete', [BasketController::class, 'postRemoveItem'])->name('basket.remove_item');
+    Route::post('destroy', [BasketController::class, 'postDestroyBasket'])->name('basket.destroy');
+});
 
-Route::get('/basket', [BasketController::class, 'getBasket'])->name('basket');
-Route::post('/basket/add', [BasketController::class, 'postAddItem'])->name('basket.add');
-Route::patch('/basket/update', [BasketController::class, 'patchUpdateItem'])->name('basket.update.quantity');
-Route::post('/basket/delete', [BasketController::class, 'postDeleteItem'])->name('basket.delete.item');
-Route::post('/basket/destroy', [BasketController::class, 'postDestroyBasket'])->name('basket.destroy');
-
-Route::get('/checkout', [OrderController::class, 'getCheckout'])->name('order.checkout');
-Route::post('/checkout', [OrderController::class, 'postCheckout'])->name('order.place');
-Route::get('/orders/history', [OrderController::class, 'getHistory'])->name('order.history');
-Route::post('/orders/delete', [OrderController::class, 'postDelete'])->name('order.delete');
+Route::prefix('order')->group(function () {
+    Route::get('checkout', [OrderController::class, 'getCheckout'])->name('order.checkout');
+    Route::post('checkout', [OrderController::class, 'postCheckout']);
+    Route::get('history', [OrderController::class, 'getHistory'])->name('order.history');
+    Route::post('delete', [OrderController::class, 'postDelete'])->name('order.delete');
+});
 
 Route::fallback(function () {
     return abort(404);

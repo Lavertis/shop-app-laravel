@@ -17420,17 +17420,14 @@ nav.navbar, footer {
   background-color: #457b9d;
 }
 
-.navbar-nav > li > .dropdown-menu {
-  background-color: #2e5f80;
+.navbar-nav > li > .dropdown-menu,
+.navbar-nav > li > .dropdown-menu > li > .dropdown-item.active {
+  background-color: #3d6d8b;
 }
 
 .navbar-nav > li > .dropdown-menu > li > .dropdown-item:active,
 .navbar-nav > li > .dropdown-menu > li > form > .dropdown-item:active {
   background-color: #457b9d;
-}
-
-.navbar-nav > li > .dropdown-menu > li > .dropdown-item.active {
-  background-color: #2e5f80;
 }
 
 .banner-gradient {

@@ -19,18 +19,18 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link @if (Route::currentRouteName() === 'home') active @endif"
+                    <a class="nav-link @if (Route::currentRouteName() === 'home') active disabled @endif"
                        href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @if (Route::currentRouteName() === 'products') active @endif"
+                    <a class="nav-link @if (Route::currentRouteName() === 'products') active disabled @endif"
                        href="{{ route('products') }}">Products</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto">
                 @auth()
                     <li class="nav-item">
-                        <a class="nav-link @if (Route::currentRouteName() === 'basket') active @endif"
+                        <a class="nav-link @if (Route::currentRouteName() === 'basket') active disabled @endif"
                            href="{{ route('basket') }}"><i class="fa fa-shopping-cart"></i></a>
                     </li>
                     <li class="nav-item dropdown">
@@ -42,11 +42,15 @@
                             aria-labelledby="userDropDownMenu">
                             <li>
                                 <a href="{{ route('order.history') }}" class="dropdown-item nav-link px-3
-                                @if (Route::currentRouteName() === 'order.history') active @endif">Orders</a>
+                                @if (Route::currentRouteName() === 'order.history') active disabled @endif">
+                                    Orders
+                                </a>
                             </li>
                             <li>
                                 <a href="{{ route('account.details') }}" class="dropdown-item nav-link px-3
-                                @if (Route::currentRouteName() === 'account.details') active @endif">Account</a>
+                                @if (Route::currentRouteName() === 'account.details') active disabled @endif">
+                                    Account
+                                </a>
                             </li>
                             <li>
                                 <form action="{{ route('logout') }}" method="post">
@@ -59,11 +63,11 @@
                 @endauth
                 @guest()
                     <li class="nav-item">
-                        <a class="nav-link @if (Route::currentRouteName() === 'login') active @endif"
+                        <a class="nav-link @if (Route::currentRouteName() === 'login') active disabled @endif"
                            href="{{ route('login') }}">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @if (Route::currentRouteName() === 'register') active @endif"
+                        <a class="nav-link @if (Route::currentRouteName() === 'register') active disabled @endif"
                            href="{{ route('register') }}">Register</a>
                     </li>
                 @endguest

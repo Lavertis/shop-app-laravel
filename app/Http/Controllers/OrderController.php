@@ -42,7 +42,7 @@ class OrderController extends Controller
     public function postCheckout(OrderCheckoutRequest $request): Redirector|Application|RedirectResponse
     {
         $this->orderService->createNewOrder($request);
-        return redirect('/orders/history');
+        return redirect()->route('order.history');
     }
 
     public function getHistory(): Factory|View|Application
@@ -54,7 +54,7 @@ class OrderController extends Controller
 
     public function postDelete(OrderDeleteRequest $request): Redirector|Application|RedirectResponse
     {
-        $this->orderService->deleteOrder($request->order_id);
-        return redirect('/orders/history');
+        $this->orderService->deleteOrder($request->get('order_id'));
+        return redirect()->route('order.history');
     }
 }

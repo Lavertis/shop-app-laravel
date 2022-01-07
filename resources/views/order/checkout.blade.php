@@ -13,7 +13,7 @@
                 </div>
             @endif
 
-            <form class="mb-2" action="{{ route('order.place') }}" method="post">
+            <form class="mb-2" action="{{ route('order.checkout') }}" method="post">
                 @csrf
                 <div class="input-group justify-content-between">
                     <div class="mb-3 col-12 col-sm-6 pe-sm-2">
