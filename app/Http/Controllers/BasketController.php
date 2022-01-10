@@ -28,7 +28,7 @@ class BasketController extends Controller
     public function getBasket(): Factory|View|Application
     {
         $products = $this->basketService->getProductsInBasket();
-        return view('Basket.Basket', ['products' => $products]);
+        return view('basket.basket', ['products' => $products]);
     }
 
     public function postAddItem(ChangeBasketItemRequest $request): JsonResponse
