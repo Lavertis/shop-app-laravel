@@ -7,6 +7,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Cookie;
+use Psy\Util\Json;
 
 class HomeController extends Controller
 {
@@ -22,9 +23,9 @@ class HomeController extends Controller
 
     public function getHome(): Factory|View|Application
     {
-        $visitCount = $this->homeService->incrementHomePageVisits();
-        $cookie = Cookie::forever('homepage_visits', $visitCount);
+        $homepageVisits = $this->homeService->handleHomepageVisits();
+        $cookie = Cookie::forever('homepage_visits', Json::encode($homepageVisits));
         Cookie::queue($cookie);
-        return view('home', ['visitCount' => $visitCount]);
+        return view('home', ['visitCount' => $homepageVisits['count']]);
     }
 }

@@ -72,8 +72,8 @@
         <h5 class="text-center mt-5" id="visit-count">
             You visited our homepage
             {{ $visitCount }}
-            @if($visitCount === 1) time @else times @endif
-            from this device
+            @if($visitCount === 1) day @else days @endif
+            in a row using this device
         </h5>
 
     </div>

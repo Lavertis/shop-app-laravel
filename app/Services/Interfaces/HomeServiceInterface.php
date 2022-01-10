@@ -8,5 +8,5 @@ namespace App\Services\Interfaces;
  */
 interface HomeServiceInterface
 {
-    public function incrementHomePageVisits();
+    public function handleHomepageVisits();
 }
