@@ -18,11 +18,13 @@
                 <div class="input-group justify-content-between">
                     <div class="mb-3 col-12 col-sm-6 pe-sm-2">
                         <label for="first_name" class="form-label">First name</label>
-                        <input type="text" class="form-control" id="first_name" name="first_name" required>
+                        <input type="text" class="form-control" id="first_name" name="first_name"
+                               value="{{ old('first_name') }}" required>
                     </div>
                     <div class="mb-3 col-12 col-sm-6 ps-sm-2">
                         <label for="last_name" class="form-label">Last name</label>
-                        <input type="text" class="form-control" id="last_name" name="last_name" required>
+                        <input type="text" class="form-control" id="last_name" name="last_name"
+                               value="{{ old('last_name') }}" required>
                     </div>
                 </div>
 
@@ -32,40 +34,48 @@
                         <select class="form-select" id="country" name="country" required>
                             <option value="" selected disabled hidden></option>
                             @foreach($countries as $country)
-                                <option value="{{ $country->code }}">{{ $country->name }}</option>
+                                <option value="{{ $country->code }}"
+                                        @if(old('country') === $country->code) selected @endif>
+                                    {{ $country->name }}
+                                </option>
                             @endforeach
                         </select>
                     </div>
                     <div class="mb-3 col-12 col-sm-6 ps-sm-2">
                         <label for="city" class="form-label">City</label>
-                        <input type="text" class="form-control" id="city" name="city" required>
+                        <input type="text" class="form-control" id="city" name="city"
+                               value="{{ old('city') }}" required>
                     </div>
                 </div>
 
                 <div class="mb-4">
                     <label for="street" class="form-label">Street</label>
-                    <input type="text" class="form-control" id="street" name="street" required>
+                    <input type="text" class="form-control" id="street" name="street"
+                           value="{{ old('street') }}" required>
                 </div>
 
                 <div class="input-group">
                     <div class="mb-3">
                         <label for="payment" class="form-label me-2">Payment method</label>
-                        <div class="btn-group no-clicked-border" role="group"
-                             aria-label="Basic radio toggle button group">
-                            <input type="radio" class="btn-check" name="payment" id="visa" value="visa" required>
+                        <div class="btn-group no-clicked-border" role="group" aria-label="Radio button group">
+                            <input type="radio" class="btn-check" name="payment" id="visa" value="visa"
+                                   @if(old('payment')==='visa') checked @endif required>
                             <label class="btn btn-outline-primary" for="visa">Visa</label>
 
-                            <input type="radio" class="btn-check" name="payment" id="mastercard" value="mastercard">
+                            <input type="radio" class="btn-check" name="payment" id="mastercard" value="mastercard"
+                                   @if(old('payment')==='mastercard') checked @endif required>
                             <label class="btn btn-outline-primary" for="mastercard">MasterCard</label>
 
-                            <input type="radio" class="btn-check" name="payment" id="transfer" value="transfer">
+                            <input type="radio" class="btn-check" name="payment" id="transfer" value="transfer"
+                                   @if(old('payment')==='transfer') checked @endif required>
                             <label class="btn btn-outline-primary" for="transfer">Transfer</label>
                         </div>
                     </div>
 
                     <div class="my-1 mx-md-auto">
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="fast_delivery" name="fast_delivery">
+                            <input class="form-check-input" type="checkbox" id="fast_delivery" name="fast_delivery"
+                                   @if(old('fast_delivery')) checked @endif>
                             <label class="form-check-label" for="fast_delivery">Fast delivery</label>
                         </div>
                     </div>

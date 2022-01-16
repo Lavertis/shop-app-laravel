@@ -34,8 +34,11 @@
                            href="{{ route('basket') }}"><i class="fa fa-shopping-cart"></i></a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false">
+                        <a href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                           class="nav-link dropdown-toggle
+                            @if (in_array(Route::currentRouteName(), ['order.history', 'account.details']))
+                               active
+                            @endif">
                             {{ Auth::user()->getAttribute('username') }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
