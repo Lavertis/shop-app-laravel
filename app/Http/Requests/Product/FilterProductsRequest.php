@@ -25,7 +25,8 @@ class FilterProductsRequest extends FormRequest
     {
         return [
             'min-price' => ['numeric', 'nullable', 'min:0', 'max:99999'],
-            'max-price' => ['numeric', 'nullable', 'min:1', 'max:100000']
+            'max-price' => ['numeric', 'nullable', 'min:1', 'max:100000'],
+            'sort' => ['in:asc,desc']
         ];
     }
 }
