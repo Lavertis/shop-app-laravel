@@ -10,7 +10,6 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Response;
 
 class BasketController extends Controller
 {
@@ -33,17 +32,12 @@ class BasketController extends Controller
 
     public function postAddItem(ChangeBasketItemRequest $request): JsonResponse
     {
-        $res = $this->basketService->addToBasket($request);
-        return Response::json($res);
+        return $this->basketService->addToBasket($request);
     }
 
     public function patchUpdateItem(ChangeBasketItemRequest $request): JsonResponse
     {
-        $res = $this->basketService->changeProductQuantity($request);
-        if (!$res)
-            return Response::json(['error' => 'Product with requested id not in basket'], 422);
-        else
-            return Response::json($res);
+        return $this->basketService->changeProductQuantity($request);
     }
 
     public function postDestroyBasket(): RedirectResponse

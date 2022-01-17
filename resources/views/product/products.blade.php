@@ -1,7 +1,8 @@
 @extends('layouts.app', ['title' => 'Products'])
 
 @section('content')
-    @include('product.add_to_basket_modal')
+    @include('product.add_to_basket_guest_modal')
+    @include('product.quantity_exceeded_modal')
 
     <div class="container-fluid mb-5">
 
@@ -89,10 +90,9 @@
                                 <h5 class="card-text my-auto col-6 col-xxl-auto">
                                     $<span class="price">{{ number_format($product->price, 2) }}</span>
                                 </h5>
-                                <button
-                                    class="btn btn-outline-success position-relative z-index-1 col-6 col-md-3 col-xxl-3"
-                                    name="add-to-basket" data-product-id="{{ $product->id }}"
-                                    @guest data-bs-toggle="modal" data-bs-target="#addToBasket" @endguest>
+                                <button name="add-to-basket" data-product-id="{{ $product->id }}"
+                                        class="btn btn-outline-success position-relative z-index-1 col-6 col-md-3 col-xxl-3"
+                                        @guest data-bs-toggle="modal" data-bs-target="#addToBasketModal" @endguest>
                                     <span class="spinner-border spinner-border-sm"
                                           role="status" aria-hidden="true" hidden></span>
                                     <i class="fa fa-shopping-basket"></i>
@@ -164,9 +164,13 @@
                 basketIcon.hidden = true;
                 loadingSpinner.hidden = false;
 
-                await sendDataAuthorized('/basket/add', {product_id: this.dataset.productId, quantity: 1})
-                await sleep(500);
+                const res = await sendDataAuthorized('/basket/add', {product_id: this.dataset.productId, quantity: 1})
+                if (res === false) {
+                    const modal = new bootstrap.Modal(document.getElementById('quantityExceededModal'));
+                    modal.show()
+                }
 
+                await sleep(500);
                 loadingSpinner.hidden = true;
                 basketIcon.hidden = false;
                 this.dataset.onClickEnabled = 'true';

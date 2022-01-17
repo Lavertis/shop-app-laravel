@@ -1,9 +1,9 @@
-<div class="modal fade" id="addToBasket" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-     aria-labelledby="addToBasketLabel" aria-hidden="true">
+<div class="modal fade" id="addToBasketModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="addToBasketModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addToBasketLabel">Not logged in</h5>
+                <h5 class="modal-title" id="addToBasketModalLabel">Not logged in</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

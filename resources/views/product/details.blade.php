@@ -1,7 +1,8 @@
 @extends('layouts.app', ['title' => 'Product details'])
 
 @section('content')
-    @include('product.add_to_basket_modal')
+    @include('product.add_to_basket_guest_modal')
+    @include('product.quantity_exceeded_modal')
 
     <div class="container my-5 col-11 col-md-9 col-xl-8 col-xxl-7 bg-white rounded shadow">
 
@@ -32,7 +33,7 @@
                 </div>
                 <button class="btn btn-outline-success col-8 col-sm-5 col-md-3 col-lg-auto" id="add-to-basket"
                         data-product-id="{{ $product->id }}"
-                        @guest data-bs-toggle="modal" data-bs-target="#addToBasket" @endguest>
+                        @guest data-bs-toggle="modal" data-bs-target="#addToBasketModal" @endguest>
                     <span class="spinner-border spinner-border-sm"
                           role="status" aria-hidden="true" hidden></span>
                     <i class="fa fa-shopping-basket"></i>
@@ -64,9 +65,16 @@
             loadingSpinner.hidden = false;
 
             let quantity = document.getElementById('quantity').value;
-            await sendDataAuthorized('/basket/add', {product_id: this.dataset.productId, quantity: quantity})
-            await sleep(500);
+            const res = await sendDataAuthorized('/basket/add', {
+                product_id: this.dataset.productId,
+                quantity: quantity
+            })
+            if (res === false) {
+                const modal = new bootstrap.Modal(document.getElementById('quantityExceededModal'));
+                modal.show()
+            }
 
+            await sleep(500);
             loadingSpinner.hidden = true;
             basketIcon.hidden = false;
             this.dataset.onClickEnabled = 'true';

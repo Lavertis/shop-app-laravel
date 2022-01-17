@@ -5,7 +5,9 @@ namespace App\Services\Implementations;
 use App\Services\Interfaces\BasketServiceInterface;
 use Auth;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 /**
  * Class BasketService
@@ -35,7 +37,7 @@ class BasketService implements BasketServiceInterface
             return Auth::user()->basket->products;
     }
 
-    public function addToBasket(Request $request): array
+    public function addToBasket(Request $request): JsonResponse
     {
         $this->makeSureBasketExists();
 
@@ -45,32 +47,39 @@ class BasketService implements BasketServiceInterface
 
         if ($product != null) {
             $currentQuantity = $product->pivot->quantity;
-            if ($this->isQuantityValid($quantity + $currentQuantity)) {
-                $product->pivot->quantity += $quantity;
-                $product->pivot->save();
-                return ['product_id' => $productId, 'quantity' => $product->pivot->quantity];
-            }
-        }
-        else
-            Auth::user()->basket->products()->attach($productId, $request->only('quantity'));
 
-        return ['product_id' => $productId, 'quantity' => 1];
+            if (!$this->isQuantityValid($quantity + $currentQuantity))
+                return Response::json(['error' => 'New quantity would exceed limit'], 422);
+
+            $product->pivot->quantity += $quantity;
+            $product->pivot->save();
+            return Response::json(['product_id' => $productId, 'quantity' => $product->pivot->quantity]);
+        }
+        else {
+            if (!$this->isQuantityValid($quantity))
+                return Response::json(['error' => 'New quantity would exceed limit'], 422);
+
+            Auth::user()->basket->products()->attach($productId, ['quantity' => $quantity]);
+            return Response::json(['product_id' => $productId, 'quantity' => $quantity]);
+        }
     }
 
-    public function changeProductQuantity(Request $request): bool|array
+    public function changeProductQuantity(Request $request): JsonResponse
     {
         $productId = $request->get('product_id');
         $quantity = $request->get('quantity');
         $product = Auth::user()->basket->products()->find($productId);
 
         if ($product == null)
-            return false;
+            return Response::json(['error' => 'Product with requested id not in basket'], 422);
 
-        if ($this->isQuantityValid($quantity)) {
-            $product->pivot->quantity = $quantity;
-            $product->pivot->save();
-        }
-        return ['product_id' => $productId, 'quantity' => $product->pivot->quantity];
+        if (!$this->isQuantityValid($quantity))
+            return Response::json(['error' => 'Quantity is too high'], 422);
+
+        $product->pivot->quantity = $quantity;
+        $product->pivot->save();
+
+        return Response::json(['product_id' => $productId, 'quantity' => $product->pivot->quantity]);
     }
 
     public function removeFromBasket(Request $request): int
