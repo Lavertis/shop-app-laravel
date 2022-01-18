@@ -88,7 +88,7 @@
                         <div class="col-12 ms-auto d-flex flex-column flex-sm-row justify-content-between">
                             <div class="mb-3 my-sm-auto col-12 col-sm-6 col-md-6 col-lg-auto text-center">
                                 <h5 class="m-0">
-                                    Total price:&nbsp
+                                    Total price:&nbsp;
                                     <b>$<span id="final-price"></span></b>
                                 </h5>
                             </div>

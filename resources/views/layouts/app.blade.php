@@ -41,8 +41,7 @@
                             @endif">
                             {{ Auth::user()->getAttribute('username') }}
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
-                            aria-labelledby="userDropDownMenu">
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
                             <li>
                                 <a href="{{ route('order.history') }}" class="dropdown-item nav-link px-3
                                 @if (Route::currentRouteName() === 'order.history') active disabled @endif">
@@ -86,7 +85,7 @@
         <p class="m-0 text-center text-white">Copyright &copy; Rafał Kuźmiczuk 2022</p>
     </div>
 </footer>
-<script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 @yield('js')
 </body>
 </html>

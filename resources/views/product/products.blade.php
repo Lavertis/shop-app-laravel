@@ -43,15 +43,15 @@
                                 <div class="col-md-8 col-lg-6">
                                     <select class="form-select" name="sort" id="sort">
                                         @if(isset($filters) && $filters['sort'] == 'asc')
-                                            <option></option>
+                                            <option label=" "></option>
                                             <option value="asc" selected>Ascending</option>
                                             <option value="desc">Descending</option>
                                         @elseif(isset($filters) && $filters['sort'] == 'desc')
-                                            <option></option>
+                                            <option label=" "></option>
                                             <option value="asc">Ascending</option>
                                             <option value="desc" selected>Descending</option>
                                         @else
-                                            <option selected></option>
+                                            <option selected label=" "></option>
                                             <option value="asc">Ascending</option>
                                             <option value="desc">Descending</option>
                                         @endif
