@@ -164,7 +164,10 @@
                 basketIcon.hidden = true;
                 loadingSpinner.hidden = false;
 
-                const res = await sendDataAuthorized('/basket/add', {product_id: this.dataset.productId, quantity: 1})
+                const res = await sendDataAuthorized('{{route('basket.add_item')}}', {
+                    product_id: this.dataset.productId,
+                    quantity: 1
+                })
                 if (res === false) {
                     const modal = new bootstrap.Modal(document.getElementById('quantityExceededModal'));
                     modal.show()

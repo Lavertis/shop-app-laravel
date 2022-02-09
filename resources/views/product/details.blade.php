@@ -65,7 +65,7 @@
             loadingSpinner.hidden = false;
 
             let quantity = document.getElementById('quantity').value;
-            const res = await sendDataAuthorized('/basket/add', {
+            const res = await sendDataAuthorized('{{route('basket.add_item')}}', {
                 product_id: this.dataset.productId,
                 quantity: quantity
             })

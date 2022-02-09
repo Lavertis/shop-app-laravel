@@ -156,7 +156,7 @@
 
                 let quantity = parseInt(input.value) - 1;
 
-                sendDataAuthorized('/basket/update', {
+                sendDataAuthorized('{{route('basket.update_item')}}', {
                     product_id: productId,
                     quantity: quantity
                 }, 'PATCH');
@@ -174,7 +174,7 @@
 
                 let quantity = parseInt(input.value) + 1;
 
-                sendDataAuthorized('/basket/update', {
+                sendDataAuthorized('{{route('basket.update_item')}}', {
                     product_id: productId,
                     quantity: quantity
                 }, 'PATCH');
