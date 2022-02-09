@@ -1,7 +1,7 @@
 @extends('layouts.app', ['title' => 'Homepage'])
 
 @section('content')
-    <div class="container mt-4 mb-5">
+    <div class="container mb-5">
 
         <div class="row py-lg-5 text-center">
             <div class="col-lg-6 col-md-8 mx-auto">
@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        <h2 class="text-center mt-lg-0 mb-4">Top selling products</h2>
+        <h2 class="text-center mb-4">Top selling products</h2>
 
         <div id="carouselBestsellers" data-bs-ride="carousel"
              class="carousel carousel-dark slide col-11 col-sm-10 col-md-9 col-lg-7 col-xl-6 col-xxl-5 my-auto mx-auto">
@@ -68,13 +68,6 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-
-        <h5 class="text-center mt-5" id="visit-count">
-            You visited our homepage
-            {{ $visitCount }}
-            @if($visitCount === 1) day @else days @endif
-            in a row using this device
-        </h5>
 
     </div>
 @endsection
